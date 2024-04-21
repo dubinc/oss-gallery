@@ -1,5 +1,5 @@
 <a href="https://precedent.dev">
-  <img alt="Precedent – Building blocks for your Next project" src="https://oss-gallery.vercel.app/opengraph-image" />
+  <img alt="OSS Gallery" src="https://oss-gallery.vercel.app/opengraph-image" />
   <h1 align="center">OSS Gallery</h1>
 </a>
 

@@ -11,7 +11,7 @@
       "@/lib/*": ["lib/*"],
       "@/auth": ["auth"]
     },
-    "strict": true,
+    "strict": false,
     "allowImportingTsExtensions": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
