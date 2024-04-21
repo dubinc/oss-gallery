@@ -1,6 +1,6 @@
 import { nFormatter } from "@dub/utils";
 import { Project } from "@prisma/client";
-import { Star } from "lucide-react";
+import { BadgeCheck, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { buttonLinkVariants } from "../ui/button-link";
@@ -26,7 +26,12 @@ export default function ProjectCard(project: Project) {
         </div>
       </div>
       <div className="p-4">
-        <h2 className="font-display text-xl font-semibold">{project.name}</h2>
+        <div className="flex items-center space-x-1">
+          <h2 className="font-display text-xl font-semibold">{project.name}</h2>
+          {project.verified && (
+            <BadgeCheck className="h-6 w-6 text-white" fill="#1c9bef" />
+          )}
+        </div>
         <p className="mt-2 text-sm text-gray-500">{project.description}</p>
       </div>
     </Link>
