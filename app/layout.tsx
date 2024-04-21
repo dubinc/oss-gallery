@@ -1,36 +1,33 @@
-import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
-import cx from "classnames";
-import { sfPro, inter } from "./fonts";
-import Nav from "@/components/layout/nav";
 import Footer from "@/components/layout/footer";
-import { Suspense } from "react";
+import Nav from "@/components/layout/nav";
+import { cn, constructMetadata } from "@dub/utils";
+import { inter, sfPro } from "./fonts";
+import "./globals.css";
+import Providers from "./providers";
 
-export const metadata = {
-  title: "Precedent - Building blocks for your Next.js project",
-  description:
-    "Precedent is the all-in-one solution for your Next.js project. It includes a design system, authentication, analytics, and more.",
-  metadataBase: new URL("https://precedent.dev"),
-  themeColor: "#FFF",
-};
+export const metadata = constructMetadata({
+  title: "OSS Gallery",
+  description: "A collection of open-source projects built with Dub.",
+  image: "/opengraph-image.png",
+});
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={cx(sfPro.variable, inter.variable)}>
-        <div className="fixed h-screen w-full bg-gradient-to-br from-indigo-50 via-white to-cyan-100" />
-        <Suspense fallback="...">
+    <html lang="en" className={cn(sfPro.variable, inter.variable)}>
+      <body>
+        <Providers>
           <Nav />
-        </Suspense>
-        <main className="flex min-h-screen w-full flex-col items-center justify-center py-32">
-          {children}
-        </main>
-        <Footer />
-        <Analytics />
+          <div className="w-full bg-gradient-to-br from-indigo-50 via-white to-cyan-100 py-16">
+            <div className="mx-auto min-h-screen w-full max-w-screen-md">
+              {children}
+            </div>
+          </div>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

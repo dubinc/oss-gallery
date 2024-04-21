@@ -1,8 +1,17 @@
+import { auth } from "@/auth";
+import { Session } from "@/lib/auth";
+import { Suspense } from "react";
 import Navbar from "./navbar";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
-export default async function Nav() {
-  const session = await getServerSession(authOptions);
+export default function Nav() {
+  return (
+    <Suspense>
+      <NavRSC />
+    </Suspense>
+  );
+}
+
+async function NavRSC() {
+  const session = (await auth()) as Session;
   return <Navbar session={session} />;
 }

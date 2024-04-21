@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import { ImageResponse } from "next/server";
+import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Precedent - Building blocks for your Next.js project";
+export const alt =
+  "OSS Gallery – A meticulously-curated list of the best open-source projects on the internet.";
 export const contentType = "image/png";
 
 export default async function OG() {
@@ -27,7 +28,7 @@ export default async function OG() {
       >
         <img
           src={`https://${process.env.VERCEL_URL || "precedent.dev"}/logo.png`}
-          alt="Precedent Logo"
+          alt="OSS Gallery Logo"
           tw="w-20 h-20 mb-4 opacity-95"
         />
         <h1
@@ -42,7 +43,7 @@ export default async function OG() {
             letterSpacing: "-0.02em",
           }}
         >
-          Precedent
+          OSS Gallery
         </h1>
       </div>
     ),
