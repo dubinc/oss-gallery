@@ -1,3 +1,4 @@
+import prisma from "@/lib/prisma";
 import { Suspense } from "react";
 import ProjectCard from "./project-card";
 
