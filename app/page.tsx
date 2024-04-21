@@ -1,10 +1,11 @@
+import ProjectList from "@/components/projects/project-list";
 import { SubmitProjectButton } from "@/components/projects/submit-project-button";
-import { MaxWidthWrapper, Twitter } from "@dub/ui";
+import { Twitter } from "@dub/ui";
 
 export default function Home() {
   return (
-    <MaxWidthWrapper className="py-20">
-      <div className="mx-auto w-full max-w-xl px-5 xl:px-0">
+    <>
+      <div className="mx-auto w-full max-w-xl px-5 py-10 xl:px-0">
         <a
           href="https://twitter.com/steventey/status/1613928948915920896"
           target="_blank"
@@ -37,6 +38,8 @@ export default function Home() {
           <SubmitProjectButton text="Submit your project" />
         </div>
       </div>
-    </MaxWidthWrapper>
+
+      <ProjectList />
+    </>
   );
 }

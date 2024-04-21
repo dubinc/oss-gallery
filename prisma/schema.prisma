@@ -80,6 +80,8 @@ model Project {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@index([verified])
 }
 
 model ProjectUser {
