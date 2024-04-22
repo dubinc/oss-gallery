@@ -1,4 +1,5 @@
 import EditProjectButton from "@/components/projects/edit-project-button";
+import ProjectLayoutTabs from "@/components/projects/project-layout-tabs";
 import ProjectProvider from "@/components/projects/project-provider";
 import { buttonLinkVariants } from "@/components/ui/button-link";
 import { getProjectBySlug } from "@/lib/actions/get-project";
@@ -114,6 +115,7 @@ export default async function ProjectLayout({
           )}
         </div>
         <p className="mt-2 text-gray-500">{project.description}</p>
+        <ProjectLayoutTabs />
         {children}
       </div>
     </ProjectProvider>

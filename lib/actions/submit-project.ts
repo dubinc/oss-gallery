@@ -4,7 +4,7 @@ import { auth } from "@/auth";
 import { shortenAndCreateLink } from "@/lib/dub";
 import { getRepo } from "@/lib/github";
 import prisma from "@/lib/prisma";
-import { getUrlFromString } from "@dub/utils";
+import { getUrlFromString, nanoid } from "@dub/utils";
 import slugify from "@sindresorhus/slugify";
 
 export async function submitProject(_prevState: any, data: FormData) {
@@ -34,11 +34,17 @@ export async function submitProject(_prevState: any, data: FormData) {
     return { error: "Invalid GitHub repository" };
   }
 
+  const slugExists = await prisma.project.findUnique({
+    where: { slug: slugify(githubData.name) },
+  });
+
   const project = await prisma.project.create({
     data: {
       name: githubData.name,
       description: githubData.description,
-      slug: slugify(githubData.name),
+      slug: slugExists
+        ? `${slugify(githubData.name)}-${nanoid(3)}`
+        : slugify(githubData.name),
       logo: githubData.logo,
       stars: githubData.stars,
       users: {

@@ -1,6 +1,5 @@
 import { cn } from "@dub/utils";
 import { cva } from "class-variance-authority";
-import { RouteType } from "next/dist/lib/load-custom-routes";
 import Link, { LinkProps } from "next/link";
 
 export const buttonLinkVariants = cva(
@@ -19,7 +18,7 @@ export const buttonLinkVariants = cva(
   },
 );
 
-export interface ButtonLinkProps extends LinkProps<RouteType> {
+export interface ButtonLinkProps extends LinkProps {
   variant?: "primary" | "secondary";
   className?: string;
   children: React.ReactNode;

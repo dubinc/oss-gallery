@@ -10,10 +10,11 @@ export async function generateStaticParams() {
 }
 
 export default async function Project({
-  params: { slug },
+  params: { slug, tab },
 }: {
   params: {
     slug: string;
+    tab?: string[];
   };
 }) {
   const project = await getProjectBySlug(slug);

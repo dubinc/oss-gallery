@@ -4,7 +4,6 @@ const nextConfig = {
   swcMinify: true,
   experimental: {
     ppr: true,
-    typedRoutes: true,
   },
   images: {
     remotePatterns: [
@@ -18,6 +17,11 @@ const nextConfig = {
       {
         source: "/github",
         destination: "https://github.com/dubinc/oss-gallery",
+        permanent: false,
+      },
+      {
+        source: "/projects",
+        destination: "/",
         permanent: false,
       },
     ];
