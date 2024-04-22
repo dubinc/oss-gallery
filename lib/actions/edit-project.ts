@@ -3,6 +3,7 @@
 import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
 import { getUrlFromString, isValidUrl, trim } from "@dub/utils";
+import { revalidatePath } from "next/cache";
 import { ZodError, ZodIssue, z } from "zod";
 import { editShortLink } from "../dub";
 import { getRepo } from "../github";
@@ -66,7 +67,7 @@ export async function editProject(
       throw new Error("You need to be a member of this project to edit it");
     }
 
-    let { props } = prevState;
+    const { props } = prevState;
 
     if (props.githubLink.url !== github) {
       const githubExists = await prisma.link.findUnique({
@@ -83,21 +84,32 @@ export async function editProject(
         throw new Error("Invalid GitHub repository");
       }
 
-      props.githubLink = await editShortLink({
+      await editShortLink({
         link: props.githubLink,
         newUrl: github,
       });
     }
 
     if (props.websiteLink?.url !== website) {
-      props.websiteLink = await editShortLink({
+      await editShortLink({
         link: props.websiteLink,
         newUrl: website,
       });
     }
 
+    if (props.name !== name || props.description !== description) {
+      const project = await prisma.project.update({
+        where: { id: projectId },
+        data: {
+          name,
+          description,
+        },
+      });
+
+      revalidatePath(`/projects/${project.slug}`);
+    }
+
     return {
-      props,
       success: "Project updated successfully",
     };
   } catch (errors: any) {

@@ -3,9 +3,10 @@
 import { EditProjectProps, editProject } from "@/lib/actions/edit-project";
 import { ProjectWithLinks } from "@/lib/types";
 import { getFormDataError } from "@/lib/zod";
-import { Button, useMediaQuery } from "@dub/ui";
+import { Button, useEnterSubmit, useMediaQuery } from "@dub/ui";
 import { AlertCircle } from "lucide-react";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import TextareaAutosize from "react-textarea-autosize";
 import { toast } from "sonner";
@@ -24,15 +25,22 @@ export default function EditProjectForm({
   const [state, formAction] = useFormState(editProject, initialState);
   const { isMobile } = useMediaQuery();
 
+  const router = useRouter();
+
   useEffect(() => {
     if (state?.success) {
+      router.refresh();
       setShowEditProjectModal(false);
       toast.success("Successfully updated project details!");
     }
-  }, [state?.success]);
+  }, [state]);
+
+  const formRef = useRef<HTMLFormElement>(null);
+  const { handleKeyDown } = useEnterSubmit(formRef);
 
   return (
     <form
+      ref={formRef}
       action={formAction}
       className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 md:px-16"
     >
@@ -80,6 +88,7 @@ export default function EditProjectForm({
             id="description"
             required
             minRows={3}
+            onKeyDown={handleKeyDown}
             defaultValue={props.description}
             placeholder="Open-source link management infrastructure."
             className={`${

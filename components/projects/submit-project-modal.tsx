@@ -21,7 +21,7 @@ const SubmitProjectModal = ({
       showModal={showSubmitProjectModal}
       setShowModal={setShowSubmitProjectModal}
     >
-      <div className="flex flex-col items-center justify-center space-y-3 border-b border-gray-200 bg-white px-4 py-6 pt-8 text-center md:px-16">
+      <div className="flex flex-col items-center justify-center space-y-2 border-b border-gray-200 bg-white px-4 py-6 pt-8 text-center md:px-16">
         <Image
           src="/logo.png"
           alt="Logo"
@@ -29,9 +29,7 @@ const SubmitProjectModal = ({
           width={20}
           height={20}
         />
-        <h3 className="font-display text-2xl font-bold">
-          Submit a new project
-        </h3>
+        <h3 className="font-display text-xl font-bold">Submit a new project</h3>
         <p className="text-sm text-gray-500">
           Submit an open-source project to be featured on OSS Gallery.
         </p>

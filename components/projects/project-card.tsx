@@ -32,7 +32,9 @@ export default function ProjectCard(project: Project) {
             <BadgeCheck className="h-6 w-6 text-white" fill="#1c9bef" />
           )}
         </div>
-        <p className="mt-2 text-sm text-gray-500">{project.description}</p>
+        <p className="mt-2 line-clamp-3 text-sm text-gray-500">
+          {project.description}
+        </p>
       </div>
     </Link>
   );
