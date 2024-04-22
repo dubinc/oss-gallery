@@ -73,6 +73,7 @@ model Project {
   description String
   logo        String
   image       String?
+  stars       Int       @default(0)
   links       Link[]
   bookmarkers Bookmark[]
 

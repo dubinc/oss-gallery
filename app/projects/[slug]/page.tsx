@@ -1,3 +1,5 @@
+import EditProjectButton from "@/components/projects/edit-project-button";
+import ProjectProvider from "@/components/projects/project-provider";
 import { buttonLinkVariants } from "@/components/ui/button-link";
 import { getRepo } from "@/lib/github";
 import prisma from "@/lib/prisma";
@@ -5,6 +7,7 @@ import { constructMetadata, nFormatter } from "@dub/utils";
 import { BadgeCheck, Globe, Star } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 export async function generateMetadata({
   params: { slug },
@@ -47,6 +50,7 @@ export default async function Project({
     },
     include: {
       links: true,
+      users: true,
     },
   });
 
@@ -59,8 +63,25 @@ export default async function Project({
 
   const { stars } = await getRepo(githubLink.url);
 
+  if (stars !== project.stars) {
+    await prisma.project.update({
+      where: {
+        slug,
+      },
+      data: {
+        stars,
+      },
+    });
+  }
+
   return (
-    <div>
+    <ProjectProvider
+      props={{
+        ...project,
+        githubLink,
+        websiteLink,
+      }}
+    >
       <div className="aspect-[4/1] w-full rounded-t-2xl bg-gradient-to-tr from-purple-100 via-violet-50 to-blue-100" />
       <div className="-mt-12 flex items-end justify-between pl-4">
         <Image
@@ -71,6 +92,9 @@ export default async function Project({
           className="h-24 w-24 rounded-full bg-white p-2"
         />
         <div className="flex items-center space-x-2 py-2">
+          <Suspense>
+            <EditProjectButton users={project.users} />
+          </Suspense>
           <a
             href={githubLink.shortLink}
             target="_blank"
@@ -107,6 +131,6 @@ export default async function Project({
           />
         )}
       </div>
-    </div>
+    </ProjectProvider>
   );
 }

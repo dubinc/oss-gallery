@@ -16,7 +16,6 @@ export async function submitProject(_prevState: any, data: FormData) {
   }
 
   const github = getUrlFromString(data.get("github") as string);
-  const website = getUrlFromString(data.get("website") as string);
 
   if (!github) {
     return { error: "Please provide a GitHub repository" };
@@ -42,6 +41,7 @@ export async function submitProject(_prevState: any, data: FormData) {
       description: githubData.description,
       slug: slugify(githubData.name),
       logo: githubData.logo,
+      stars: githubData.stars,
       users: {
         create: {
           userId: session.user.id,

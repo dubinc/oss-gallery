@@ -30,12 +30,12 @@ export default function SubmitProjectForm() {
             required
             placeholder="https://github.com/dubinc/dub"
             className={`${
-              state.error
+              state?.error
                 ? "border-red-300 pr-10 text-red-500 placeholder-red-300 focus:border-red-500 focus:ring-red-500"
                 : "border-gray-300 text-gray-900 placeholder-gray-400 focus:border-gray-500 focus:ring-gray-500"
             } w-full rounded-md focus:outline-none sm:text-sm`}
           />
-          {state.error && (
+          {state?.error && (
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
               <AlertCircle
                 className="h-5 w-5 text-red-500"
@@ -46,9 +46,9 @@ export default function SubmitProjectForm() {
             </div>
           )}
         </div>
-        {state.error && (
+        {state?.error && (
           <p className="mt-1 text-sm text-red-600" id="form-error">
-            {state.error}
+            {state?.error}
           </p>
         )}
       </label>

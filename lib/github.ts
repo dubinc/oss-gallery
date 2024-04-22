@@ -9,6 +9,9 @@ export async function getRepo(url: string) {
           Authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`,
           "Content-Type": "application/json",
         },
+        next: {
+          revalidate: 3600,
+        },
       }),
     }).then((res) => res.json())) || {};
 

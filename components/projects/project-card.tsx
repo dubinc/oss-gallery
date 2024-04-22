@@ -22,7 +22,7 @@ export default function ProjectCard(project: Project) {
         />
         <div className={buttonLinkVariants({ variant: "secondary" })}>
           <Star className="h-4 w-4" />
-          <p className="text-sm">{nFormatter(16202, { full: true })}</p>
+          <p className="text-sm">{nFormatter(project.stars, { full: true })}</p>
         </div>
       </div>
       <div className="p-4">
