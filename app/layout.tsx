@@ -8,7 +8,7 @@ import Providers from "./providers";
 export const metadata = constructMetadata({
   title: "OSS Gallery",
   description: "A collection of open-source projects built with Dub.",
-  image: "/opengraph-image.png",
+  image: null,
 });
 
 export default function RootLayout({

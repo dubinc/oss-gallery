@@ -39,7 +39,6 @@ export default async function OG() {
               "linear-gradient(to bottom right, #000000 21.66%, #78716c 86.47%)",
             backgroundClip: "text",
             color: "transparent",
-            lineHeight: "5rem",
             letterSpacing: "-0.02em",
           }}
         >
