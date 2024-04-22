@@ -3,7 +3,8 @@ import { Link } from "@prisma/client";
 import { Dub } from "dub";
 
 export const dub = new Dub({
-  workspaceId: "ws_clv9jxuxp0006gpq847kwrcwj",
+  // workspaceId: "ws_clv9jxuxp0006gpq847kwrcwj",
+  workspaceId: "ws_cl7pj5kq4006835rbjlt2ofka",
 });
 
 export async function shortenAndCreateLink({
@@ -34,11 +35,11 @@ export async function editShortLink({
   link: Link;
   newUrl: string;
 }) {
-  const shortLinkUrl = new URL(link.shortLink);
+  const { domain, key } = getDomainAndKey(link.shortLink);
 
   const { id: dubLinkId } = await dub.links.get({
-    domain: shortLinkUrl.hostname,
-    key: shortLinkUrl.pathname.slice(1),
+    domain,
+    key,
   });
 
   await dub.links.update(dubLinkId, {
@@ -53,4 +54,12 @@ export async function editShortLink({
       url: newUrl,
     },
   });
+}
+
+export function getDomainAndKey(url: string) {
+  const link = new URL(url);
+  return {
+    domain: link.hostname,
+    key: link.pathname.slice(1),
+  };
 }

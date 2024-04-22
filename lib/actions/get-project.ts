@@ -1,8 +1,9 @@
 import { cache } from "react";
 import prisma from "../prisma";
+import { ProjectWithLinks } from "../types";
 
 export const getProjectBySlug = cache(async (slug: string) => {
-  return await prisma.project.findUnique({
+  const project = await prisma.project.findUnique({
     where: {
       slug,
     },
@@ -10,4 +11,14 @@ export const getProjectBySlug = cache(async (slug: string) => {
       links: true,
     },
   });
+  if (!project) {
+    return null;
+  }
+  const githubLink = project.links.find((link) => link.type === "GITHUB")!;
+  const websiteLink = project.links.find((link) => link.type === "WEBSITE");
+  return {
+    ...project,
+    githubLink,
+    websiteLink,
+  } as ProjectWithLinks;
 });

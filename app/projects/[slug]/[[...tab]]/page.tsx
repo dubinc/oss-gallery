@@ -1,3 +1,4 @@
+import ProjectAnalytics from "@/components/projects/project-analytics";
 import { getProjectBySlug } from "@/lib/actions/get-project";
 import prisma from "@/lib/prisma";
 import { notFound } from "next/navigation";
@@ -23,9 +24,19 @@ export default async function Project({
     notFound();
   }
 
-  return (
-    project.image && (
-      <img src={project.image} alt={project.name} className="mt-4 rounded-xl" />
-    )
-  );
+  if (!tab) {
+    return (
+      project.image && (
+        <img
+          src={project.image}
+          alt={project.name}
+          className="mt-4 rounded-xl"
+        />
+      )
+    );
+  }
+
+  if (tab[0] === "analytics") {
+    return <ProjectAnalytics project={project} />;
+  }
 }

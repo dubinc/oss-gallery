@@ -50,10 +50,7 @@ export default async function ProjectLayout({
     notFound();
   }
 
-  const githubLink = project.links.find((link) => link.type === "GITHUB")!;
-  const websiteLink = project.links.find((link) => link.type === "WEBSITE");
-
-  const { stars } = await getRepo(githubLink.url);
+  const { stars } = await getRepo(project.githubLink.url);
 
   if (stars !== project.stars) {
     await prisma.project.update({
@@ -67,13 +64,7 @@ export default async function ProjectLayout({
   }
 
   return (
-    <ProjectProvider
-      props={{
-        ...project,
-        githubLink,
-        websiteLink,
-      }}
-    >
+    <ProjectProvider props={project}>
       <div className="aspect-[4/1] w-full rounded-t-2xl bg-gradient-to-tr from-purple-100 via-violet-50 to-blue-100" />
       <div className="-mt-8 flex items-center justify-between px-4 sm:-mt-12 sm:items-end md:pr-0">
         <Image
@@ -88,16 +79,16 @@ export default async function ProjectLayout({
             <EditProjectButton projectId={project.id} />
           </Suspense>
           <a
-            href={githubLink.shortLink}
+            href={project.githubLink.shortLink}
             target="_blank"
             className={buttonLinkVariants({ variant: "secondary" })}
           >
             <Star className="h-4 w-4" />
             <p className="text-sm">{nFormatter(stars, { full: true })}</p>
           </a>
-          {websiteLink && (
+          {project.websiteLink && (
             <a
-              href={websiteLink.shortLink}
+              href={project.websiteLink.shortLink}
               target="_blank"
               className={buttonLinkVariants()}
             >
@@ -107,7 +98,7 @@ export default async function ProjectLayout({
           )}
         </div>
       </div>
-      <div className="max-w-lg p-4">
+      <div className="max-w-lg p-4 pb-0">
         <div className="flex items-center space-x-2">
           <h1 className="font-display text-3xl font-bold">{project.name}</h1>
           {project.verified && (
@@ -115,6 +106,8 @@ export default async function ProjectLayout({
           )}
         </div>
         <p className="mt-2 text-gray-500">{project.description}</p>
+      </div>
+      <div className="px-4">
         <ProjectLayoutTabs />
         {children}
       </div>
