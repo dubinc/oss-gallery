@@ -10,6 +10,10 @@ const PROJECT_TABS = [
     title: "Analytics",
     tab: "analytics",
   },
+  {
+    title: "Contributors",
+    tab: "contributors",
+  },
 ];
 
 export default function ProjectLayoutTabs() {

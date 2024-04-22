@@ -39,4 +39,14 @@ export default async function Project({
   if (tab[0] === "analytics") {
     return <ProjectAnalytics project={project} />;
   }
+
+  if (tab[0] === "contributors") {
+    return (
+      <img
+        src={`https://contrib.rocks/image?repo=${
+          project.githubLink.url.split("https://github.com/")[1]
+        }`}
+      />
+    );
+  }
 }

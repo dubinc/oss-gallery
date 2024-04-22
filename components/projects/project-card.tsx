@@ -11,7 +11,7 @@ export default function ProjectCard(project: Project) {
       href={`/projects/${project.slug}`}
       className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-xl"
     >
-      <div className="aspect-[3/1] w-full rounded-t-xl bg-gradient-to-tr from-purple-100 via-violet-50 to-blue-100" />
+      <div className="aspect-[5/2] w-full rounded-t-xl bg-gradient-to-tr from-purple-100 via-violet-50 to-blue-100" />
       <div className="-mt-8 flex items-center justify-between px-2">
         <Image
           src={project.logo}

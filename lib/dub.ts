@@ -3,8 +3,7 @@ import { Link } from "@prisma/client";
 import { Dub } from "dub";
 
 export const dub = new Dub({
-  // workspaceId: "ws_clv9jxuxp0006gpq847kwrcwj",
-  workspaceId: "ws_cl7pj5kq4006835rbjlt2ofka",
+  workspaceId: "ws_clv9jxuxp0006gpq847kwrcwj",
 });
 
 export async function shortenAndCreateLink({
