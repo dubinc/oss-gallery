@@ -1,21 +1,14 @@
 import { auth } from "@/auth";
+import { getProjectUser } from "@/lib/actions/get-project-user";
 import { EditProjectButtonClient } from "./edit-project-button-client";
 
 export default async function EditProjectButton({
-  users,
+  projectId,
 }: {
-  users: {
-    id: string;
-    userId: string;
-    role: string;
-    projectId: string;
-  }[];
+  projectId: string;
 }) {
   const session = await auth();
+  const user = await getProjectUser({ projectId, userId: session?.user?.id });
 
-  return (
-    users.some((user) => user.userId === session?.user?.id) && (
-      <EditProjectButtonClient />
-    )
-  );
+  return user && <EditProjectButtonClient />;
 }

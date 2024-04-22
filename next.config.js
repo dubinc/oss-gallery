@@ -3,6 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   experimental: {
+    ppr: true,
     typedRoutes: true,
   },
   images: {
