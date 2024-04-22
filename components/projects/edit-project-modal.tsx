@@ -38,7 +38,10 @@ const EditProjectModal = ({
         <p className="text-sm text-gray-500">Edit your project details below</p>
       </div>
 
-      <EditProjectForm props={props} />
+      <EditProjectForm
+        props={props}
+        setShowEditProjectModal={setShowEditProjectModal}
+      />
     </Modal>
   );
 };

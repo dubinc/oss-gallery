@@ -2,60 +2,111 @@
 
 import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
-import { getUrlFromString } from "@dub/utils";
+import { getUrlFromString, isValidUrl, trim } from "@dub/utils";
+import { ZodError, ZodIssue, z } from "zod";
 import { editShortLink } from "../dub";
+import { getRepo } from "../github";
 import { ProjectWithLinks } from "../types";
 
+const editProjectSchema = z.object({
+  name: z.preprocess(trim, z.string().min(1).max(64), {
+    message: "Invalid project name",
+  }),
+  description: z.preprocess(trim, z.string().min(1).max(1000), {
+    message: "Invalid project description",
+  }),
+  github: z
+    .string()
+    .transform((v) => getUrlFromString(v))
+    .refine((v) => isValidUrl(v), { message: "Invalid GitHub URL" }),
+  website: z
+    .string()
+    .transform((v) => getUrlFromString(v))
+    .refine((v) => isValidUrl(v), { message: "Invalid website URL" })
+    .optional(),
+  projectId: z.string().min(8),
+});
+
+export interface EditProjectProps {
+  props?: ProjectWithLinks;
+  success?: string;
+  errors?: ZodIssue[];
+}
+
 export async function editProject(
-  prevState: {
-    props: ProjectWithLinks;
-    error: {
-      github?: string;
-      website?: string;
-    } | null;
-  },
+  prevState: EditProjectProps,
   data: FormData,
-) {
-  const session = await auth();
+): Promise<EditProjectProps> {
+  try {
+    const { name, description, github, website, projectId } =
+      editProjectSchema.parse({
+        name: data.get("name"),
+        description: data.get("description"),
+        github: data.get("github"),
+        website: data.get("website"),
+        projectId: data.get("projectId"),
+      });
 
-  if (!session?.user?.id) {
-    return { error: "You need to be logged in to submit a project" };
-  }
+    const session = await auth();
 
-  const userIsProjectMember = await prisma.projectUser.findUnique({
-    where: {
-      projectId_userId: {
-        projectId: data.get("projectId") as string,
-        userId: session.user.id,
+    if (!session?.user?.id) {
+      throw new Error("You need to be logged in to edit a project");
+    }
+
+    const userIsProjectMember = await prisma.projectUser.findUnique({
+      where: {
+        projectId_userId: {
+          projectId,
+          userId: session.user.id,
+        },
       },
-    },
-  });
-
-  if (!userIsProjectMember) {
-    return { error: "You need to be a member of the project to edit it" };
-  }
-
-  let { props } = prevState;
-
-  const github = getUrlFromString(data.get("github") as string);
-  const website = getUrlFromString(data.get("website") as string);
-
-  if (props.githubLink.url !== github) {
-    props.githubLink = await editShortLink({
-      link: props.githubLink,
-      newUrl: github,
     });
-  }
 
-  if (props.websiteLink?.url !== website) {
-    props.websiteLink = await editShortLink({
-      link: props.websiteLink,
-      newUrl: website,
-    });
-  }
+    if (!userIsProjectMember) {
+      throw new Error("You need to be a member of this project to edit it");
+    }
 
-  return {
-    props,
-    error: null,
-  };
+    let { props } = prevState;
+
+    if (props.githubLink.url !== github) {
+      const githubExists = await prisma.link.findUnique({
+        where: { url: github },
+      });
+
+      if (githubExists) {
+        throw new Error("This GitHub repository is already submitted");
+      }
+
+      const githubData = await getRepo(github);
+
+      if (!githubData.name) {
+        throw new Error("Invalid GitHub repository");
+      }
+
+      props.githubLink = await editShortLink({
+        link: props.githubLink,
+        newUrl: github,
+      });
+    }
+
+    if (props.websiteLink?.url !== website) {
+      props.websiteLink = await editShortLink({
+        link: props.websiteLink,
+        newUrl: website,
+      });
+    }
+
+    return {
+      props,
+      success: "Project updated successfully",
+    };
+  } catch (errors: any) {
+    if (errors instanceof ZodError) {
+      return { errors: errors.issues };
+    }
+
+    return {
+      errors: [{ message: errors.message, code: "custom", path: ["unknown"] }],
+    };
+  }
 }

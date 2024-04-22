@@ -26,10 +26,12 @@
     "react": "18.2.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-dom": "18.2.0",
+    "react-textarea-autosize": "^8.5.3",
     "react@latest": "link:@@types/react@latest",
     "sonner": "^1.4.41",
     "typescript": "5.4.5",
-    "use-debounce": "^9.0.4"
+    "use-debounce": "^9.0.4",
+    "zod": "^3.23.0"
   },
   "devDependencies": {
     "@types/node": "20.12.7",
