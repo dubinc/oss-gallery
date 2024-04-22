@@ -15,6 +15,9 @@ async function ProjectListRSC() {
     where: {
       verified: true,
     },
+    orderBy: {
+      stars: "desc",
+    },
   });
 
   return (

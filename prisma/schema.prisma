@@ -83,6 +83,7 @@ model Project {
   updatedAt DateTime @updatedAt
 
   @@index([verified])
+  @@index([stars])
 }
 
 model ProjectUser {

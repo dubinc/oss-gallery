@@ -6,7 +6,6 @@ import { getRepo } from "@/lib/github";
 import prisma from "@/lib/prisma";
 import { getUrlFromString } from "@dub/utils";
 import slugify from "@sindresorhus/slugify";
-import { redirect } from "next/navigation";
 
 export async function submitProject(_prevState: any, data: FormData) {
   const session = await auth();
@@ -65,7 +64,5 @@ export async function submitProject(_prevState: any, data: FormData) {
       }),
   ]);
 
-  redirect(`/projects/${project.slug}`);
-
-  return { error: null };
+  return { redirect: `/projects/${project.slug}` };
 }

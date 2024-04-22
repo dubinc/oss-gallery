@@ -3,15 +3,32 @@
 import { submitProject } from "@/lib/actions/submit-project";
 import { Button, useMediaQuery } from "@dub/ui";
 import { AlertCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { useFormState, useFormStatus } from "react-dom";
+import { toast } from "sonner";
 
 const initialState = {
   error: null,
 };
 
-export default function SubmitProjectForm() {
+export default function SubmitProjectForm({
+  setShowSubmitProjectModal,
+}: {
+  setShowSubmitProjectModal: Dispatch<SetStateAction<boolean>>;
+}) {
   const [state, formAction] = useFormState(submitProject, initialState);
   const { isMobile } = useMediaQuery();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (state?.redirect) {
+      router.push(state.redirect);
+      toast.success("Successfully submitted project!");
+      setShowSubmitProjectModal(false);
+    }
+  }, [state?.redirect]);
 
   return (
     <form

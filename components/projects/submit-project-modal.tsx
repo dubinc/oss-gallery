@@ -35,7 +35,9 @@ const SubmitProjectModal = ({
         </p>
       </div>
 
-      <SubmitProjectForm />
+      <SubmitProjectForm
+        setShowSubmitProjectModal={setShowSubmitProjectModal}
+      />
     </Modal>
   );
 };
