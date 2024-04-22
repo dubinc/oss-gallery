@@ -4,7 +4,7 @@ import ProjectCard from "./project-card";
 
 export default function ProjectList() {
   return (
-    <Suspense>
+    <Suspense fallback={null}>
       <ProjectListRSC />
     </Suspense>
   );
