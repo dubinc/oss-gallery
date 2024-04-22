@@ -52,13 +52,13 @@ export default async function Profile({
   return (
     <div>
       <div className="aspect-[4/1] w-full rounded-t-2xl bg-gradient-to-tr from-purple-100 via-violet-50 to-blue-100" />
-      <div className="-mt-12 flex items-end justify-between pl-4">
+      <div className="-mt-8 flex items-center justify-between px-4 sm:-mt-12 sm:items-end md:pr-0">
         <Image
           src={user.image}
           alt={user.name}
           width={100}
           height={100}
-          className="h-24 w-24 rounded-full bg-white p-2"
+          className="h-16 w-16 rounded-full bg-white p-2 sm:h-24 sm:w-24"
         />
       </div>
       <div className="max-w-lg p-4">

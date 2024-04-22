@@ -83,7 +83,7 @@ export default async function Project({
       }}
     >
       <div className="aspect-[4/1] w-full rounded-t-2xl bg-gradient-to-tr from-purple-100 via-violet-50 to-blue-100" />
-      <div className="-mt-8 flex items-center justify-between px-4 sm:-mt-12 sm:items-end">
+      <div className="-mt-8 flex items-center justify-between px-4 sm:-mt-12 sm:items-end md:pr-0">
         <Image
           src={project.logo}
           alt={project.name}
