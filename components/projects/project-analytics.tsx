@@ -43,8 +43,6 @@ async function ProjectAnalyticsRSC({ project }: { project: ProjectWithLinks }) {
     },
   );
 
-  console.log({ analytics, chartData });
-
   return (
     <div className="mt-4">
       <ProjectAnalyticsClient
