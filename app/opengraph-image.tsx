@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "OSS Gallery – A meticulously-curated list of the best open-source projects on the internet.";
+  "OSS Gallery – A crowdsourced list of the best open-source projects on the internet.";
 export const contentType = "image/png";
 
 export default async function OG() {

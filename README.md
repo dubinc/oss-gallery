@@ -9,4 +9,4 @@
 
 ## Introduction
 
-OSS Gallery is a meticulously-curated list of the best open-source projects on the internet.
+OSS Gallery is a crowdsourced list of the best open-source projects on the internet.
