@@ -1,4 +1,4 @@
-import { dub, getDomainAndKey } from "@/lib/dub";
+import { dub } from "@/lib/dub";
 import { ProjectWithLinks } from "@/lib/types";
 import { Suspense } from "react";
 import ProjectAnalyticsClient from "./project-analytics-client";
@@ -21,10 +21,8 @@ async function ProjectAnalyticsRSC({ project }: { project: ProjectWithLinks }) {
 
   const analytics = await Promise.all(
     links.map(async (link) => {
-      const { domain, key } = getDomainAndKey(link.shortLink);
       return await dub.analytics.timeseries({
-        domain,
-        key,
+        externalId: `ext_${link.id}`,
         interval: "30d",
       });
     }),

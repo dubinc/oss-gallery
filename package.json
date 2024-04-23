@@ -20,7 +20,7 @@
     "@sindresorhus/slugify": "^2.2.1",
     "@tremor/react": "^3.16.1",
     "class-variance-authority": "^0.7.0",
-    "dub": "^0.24.1",
+    "dub": "^0.24.4",
     "framer-motion": "^11.1.7",
     "lucide-react": "0.372.0",
     "next": "canary",

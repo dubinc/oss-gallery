@@ -33,8 +33,8 @@ dependencies:
     specifier: ^0.7.0
     version: 0.7.0
   dub:
-    specifier: ^0.24.1
-    version: 0.24.1(zod@3.23.0)
+    specifier: ^0.24.4
+    version: 0.24.4(zod@3.23.0)
   framer-motion:
     specifier: ^11.1.7
     version: 11.1.7(react-dom@18.2.0)(react@18.2.0)
@@ -1843,8 +1843,8 @@ packages:
       csstype: 3.1.2
     dev: false
 
-  /dub@0.24.1(zod@3.23.0):
-    resolution: {integrity: sha512-VInIKSwoJqfKJtk7m13UFYmrbmTvHmtz/hLDCALl3VW3plveoW5JBUsMEaokuJwMMZeVj5aU1/2Wi5+hFcoakA==}
+  /dub@0.24.4(zod@3.23.0):
+    resolution: {integrity: sha512-BpU8Jj5Pr3xur9UTjXUqzzsaWxwgWGjoAZqoed2QqF33aXIpd4A3VR8TxswY8+qGIifXr4KodC8Sj1w0JtFvDA==}
     peerDependencies:
       zod: '>= 3'
     dependencies:

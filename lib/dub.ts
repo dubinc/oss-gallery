@@ -34,31 +34,17 @@ export async function editShortLink({
   link: Link;
   newUrl: string;
 }) {
-  const { domain, key } = getDomainAndKey(link.shortLink);
-
-  const { id: dubLinkId } = await dub.links.get({
-    domain,
-    key,
-  });
-
-  await dub.links.update(dubLinkId, {
-    url: newUrl,
-  });
-
-  return await prisma.link.update({
-    where: {
-      id: link.id,
-    },
-    data: {
+  return await Promise.all([
+    dub.links.update(`ext_${link.id}`, {
       url: newUrl,
-    },
-  });
-}
-
-export function getDomainAndKey(url: string) {
-  const link = new URL(url);
-  return {
-    domain: link.hostname,
-    key: link.pathname.slice(1),
-  };
+    }),
+    prisma.link.update({
+      where: {
+        id: link.id,
+      },
+      data: {
+        url: newUrl,
+      },
+    }),
+  ]);
 }
