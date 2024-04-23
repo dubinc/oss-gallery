@@ -2,37 +2,11 @@
 
 import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
-import { getUrlFromString, isValidUrl, trim } from "@dub/utils";
-import { revalidatePath } from "next/cache";
-import { ZodError, ZodIssue, z } from "zod";
+import { ZodError } from "zod";
 import { editShortLink } from "../dub";
 import { getRepo } from "../github";
-import { ProjectWithLinks } from "../types";
-
-const editProjectSchema = z.object({
-  name: z.preprocess(trim, z.string().min(1).max(64), {
-    message: "Invalid project name",
-  }),
-  description: z.preprocess(trim, z.string().min(1).max(1000), {
-    message: "Invalid project description",
-  }),
-  github: z
-    .string()
-    .transform((v) => getUrlFromString(v))
-    .refine((v) => isValidUrl(v), { message: "Invalid GitHub URL" }),
-  website: z
-    .string()
-    .transform((v) => getUrlFromString(v))
-    .refine((v) => isValidUrl(v), { message: "Invalid website URL" })
-    .optional(),
-  projectId: z.string().min(8),
-});
-
-export interface EditProjectProps {
-  props?: ProjectWithLinks;
-  success?: string;
-  errors?: ZodIssue[];
-}
+import { EditProjectProps, editProjectSchema } from "./edit-project-utils";
+import { getProject } from "./get-project";
 
 export async function editProject(
   prevState: EditProjectProps,
@@ -67,7 +41,7 @@ export async function editProject(
       throw new Error("You need to be a member of this project to edit it");
     }
 
-    const { props } = prevState;
+    const props = await getProject({ id: projectId });
 
     if (props.githubLink.url !== github) {
       const githubExists = await prisma.link.findUnique({
@@ -98,27 +72,33 @@ export async function editProject(
     }
 
     if (props.name !== name || props.description !== description) {
-      const project = await prisma.project.update({
+      await prisma.project.update({
         where: { id: projectId },
         data: {
           name,
           description,
         },
       });
-
-      revalidatePath(`/projects/${project.slug}`);
     }
 
     return {
-      success: "Project updated successfully",
+      status: "success",
+      message: "Project updated successfully",
     };
-  } catch (errors: any) {
-    if (errors instanceof ZodError) {
-      return { errors: errors.issues };
+  } catch (e) {
+    if (e instanceof ZodError) {
+      return {
+        status: "error",
+        message: "Invalid form data",
+        errors: e.issues.map((issue) => ({
+          path: issue.path.join("."),
+          message: issue.message,
+        })),
+      };
     }
-
     return {
-      errors: [{ message: errors.message, code: "custom", path: ["unknown"] }],
+      status: "error",
+      message: "Something went wrong. Please try again.",
     };
   }
 }

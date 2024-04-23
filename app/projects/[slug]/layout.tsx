@@ -2,7 +2,7 @@ import EditProjectButton from "@/components/projects/edit-project-button";
 import ProjectLayoutTabs from "@/components/projects/project-layout-tabs";
 import ProjectProvider from "@/components/projects/project-provider";
 import { buttonLinkVariants } from "@/components/ui/button-link";
-import { getProjectBySlug } from "@/lib/actions/get-project";
+import { getProject } from "@/lib/actions/get-project";
 import { getRepo } from "@/lib/github";
 import prisma from "@/lib/prisma";
 import { constructMetadata } from "@/lib/utils";
@@ -17,7 +17,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }) {
-  const project = await getProjectBySlug(slug);
+  const project = await getProject({ slug });
 
   if (!project) {
     return;
@@ -45,7 +45,7 @@ export default async function ProjectLayout({
   };
   children: React.ReactNode;
 }) {
-  const project = await getProjectBySlug(slug);
+  const project = await getProject({ slug });
 
   if (!project) {
     notFound();
