@@ -108,8 +108,10 @@ export default async function ProjectLayout({
         </div>
         <p className="mt-2 text-gray-500">{project.description}</p>
       </div>
-      <div className="px-4">
-        <ProjectLayoutTabs />
+
+      <ProjectLayoutTabs />
+
+      <div className="mx-4 flex min-h-80 items-center justify-center rounded-xl border border-gray-200 bg-white p-4">
         {children}
       </div>
     </ProjectProvider>

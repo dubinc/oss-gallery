@@ -4,24 +4,14 @@ import { cn } from "@dub/utils";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-
-const PROJECT_TABS = [
-  {
-    title: "Analytics",
-    tab: "analytics",
-  },
-  {
-    title: "Contributors",
-    tab: "contributors",
-  },
-];
+import { PROJECT_TABS } from "./project-constants";
 
 export default function ProjectLayoutTabs() {
   const { slug, tab } = useParams() as { slug: string; tab?: string[] };
 
   return (
-    <div className="my-6 flex items-center">
-      <TabLink title="Overview" href={`/projects/${slug}`} active={!tab} />
+    <div className="my-4 flex items-center p-4">
+      <TabLink title="Analytics" href={`/projects/${slug}`} active={!tab} />
       {PROJECT_TABS.map((t) => (
         <TabLink
           key={t.tab}

@@ -1,13 +1,18 @@
 import ProjectAnalytics from "@/components/projects/project-analytics";
+import { PROJECT_TABS } from "@/components/projects/project-constants";
+import ProjectTeam from "@/components/projects/project-team";
 import { getProject } from "@/lib/actions/get-project";
-import prisma from "@/lib/prisma";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
-  const projects = await prisma.project.findMany();
-  return projects.map(({ slug }) => ({
-    slug,
-  }));
+  return [
+    {
+      tab: [], // for the root page
+    },
+    ...PROJECT_TABS.map((tab) => ({
+      tab: [tab.tab],
+    })),
+  ];
 }
 
 export default async function Project({
@@ -25,19 +30,11 @@ export default async function Project({
   }
 
   if (!tab) {
-    return (
-      project.image && (
-        <img
-          src={project.image}
-          alt={project.name}
-          className="mt-4 rounded-xl"
-        />
-      )
-    );
+    return <ProjectAnalytics project={project} />;
   }
 
-  if (tab[0] === "analytics") {
-    return <ProjectAnalytics project={project} />;
+  if (tab[0] === "team") {
+    return <ProjectTeam project={project} />;
   }
 
   if (tab[0] === "contributors") {

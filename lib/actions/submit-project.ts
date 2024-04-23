@@ -47,10 +47,11 @@ export async function submitProject(_prevState: any, data: FormData) {
         : slugify(githubData.name),
       logo: githubData.logo,
       stars: githubData.stars,
+      verified: githubData.stars > 1000, // automatically verify projects with > 1000 stars
       users: {
         create: {
           userId: session.user.id,
-          role: "OWNER",
+          role: "Founder",
         },
       },
     },
