@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma";
-import { constructMetadata } from "@dub/utils";
+import { constructMetadata } from "@/lib/utils";
 import { BadgeCheck } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";

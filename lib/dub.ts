@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import { nanoid } from "@dub/utils";
 import { Link } from "@prisma/client";
 import { Dub } from "dub";
 
@@ -15,10 +16,15 @@ export async function shortenAndCreateLink({
   type: "GITHUB" | "WEBSITE";
   projectId: string;
 }) {
-  const { shortLink } = await dub.links.create({ url });
+  const linkId = nanoid(24);
+  const { shortLink } = await dub.links.create({
+    url,
+    externalId: linkId,
+  });
 
   return await prisma.link.create({
     data: {
+      id: linkId,
       type,
       url,
       shortLink,

@@ -1,15 +1,12 @@
 import Footer from "@/components/layout/footer";
 import Nav from "@/components/layout/nav";
-import { cn, constructMetadata } from "@dub/utils";
+import { constructMetadata } from "@/lib/utils";
+import { cn } from "@dub/utils";
 import { inter, sfPro } from "./fonts";
 import "./globals.css";
 import Providers from "./providers";
 
-export const metadata = constructMetadata({
-  title: "OSS Gallery",
-  description: "A collection of open-source projects built with Dub.",
-  image: null,
-});
+export const metadata = constructMetadata();
 
 export default function RootLayout({
   children,
