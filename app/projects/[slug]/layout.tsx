@@ -31,7 +31,12 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const projects = await prisma.project.findMany();
+  const projects = await prisma.project.findMany({
+    where: {
+      verified: true,
+    },
+    take: 10,
+  });
   return projects.map(({ slug }) => ({
     slug,
   }));
