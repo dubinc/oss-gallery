@@ -1,8 +1,8 @@
 import { auth } from "@/auth";
 import { EnrichedProjectProps } from "@/lib/types";
-import { EditProjectButtonClient } from "./edit-project-button-client";
+import { EditTeamButtonClient } from "./edit-team-button-client";
 
-export default async function EditProjectButton({
+export default async function EditTeamButton({
   project,
 }: {
   project: EnrichedProjectProps;
@@ -15,6 +15,6 @@ export default async function EditProjectButton({
   }
 
   if (users.some((user) => user.id === session.user.id)) {
-    return <EditProjectButtonClient />;
+    return <EditTeamButtonClient />;
   }
 }

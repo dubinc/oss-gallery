@@ -3,6 +3,6 @@
 import { revalidatePath } from "next/cache";
 
 export async function revalidateProject(slug: string) {
-  console.log("Revalidating project");
-  revalidatePath(`/projects/${slug}`);
+  console.log("Revalidating project", slug);
+  revalidatePath(`/projects/${slug}/[[...tab]]`, "page");
 }

@@ -1,6 +1,6 @@
 import { cache } from "react";
 import prisma from "../prisma";
-import { ProjectWithLinks } from "../types";
+import { EnrichedProjectProps } from "../types";
 
 export const getProject = cache(
   async ({ id, slug }: { id?: string; slug?: string }) => {
@@ -11,17 +11,34 @@ export const getProject = cache(
       },
       include: {
         links: true,
+        users: {
+          select: {
+            role: true,
+            userId: true,
+            user: {
+              select: {
+                name: true,
+                username: true,
+                image: true,
+              },
+            },
+          },
+        },
       },
     });
-    if (!project) {
-      return null;
-    }
     const githubLink = project.links.find((link) => link.type === "GITHUB")!;
     const websiteLink = project.links.find((link) => link.type === "WEBSITE");
     return {
       ...project,
       githubLink,
       websiteLink,
-    } as ProjectWithLinks;
+      users: project.users.map(({ userId, role, user }) => ({
+        id: userId,
+        role,
+        name: user.name,
+        username: user.username,
+        image: user.image,
+      })),
+    } as EnrichedProjectProps;
   },
 );

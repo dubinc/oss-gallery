@@ -1,5 +1,5 @@
 import { dub } from "@/lib/dub";
-import { ProjectWithLinks } from "@/lib/types";
+import { EnrichedProjectProps } from "@/lib/types";
 import { LoadingSpinner } from "@dub/ui";
 import { Suspense } from "react";
 import ProjectAnalyticsClient from "./project-analytics-client";
@@ -7,7 +7,7 @@ import ProjectAnalyticsClient from "./project-analytics-client";
 export default function ProjectAnalytics({
   project,
 }: {
-  project: ProjectWithLinks;
+  project: EnrichedProjectProps;
 }) {
   return (
     <Suspense fallback={<LoadingSpinner />}>
@@ -16,7 +16,11 @@ export default function ProjectAnalytics({
   );
 }
 
-async function ProjectAnalyticsRSC({ project }: { project: ProjectWithLinks }) {
+async function ProjectAnalyticsRSC({
+  project,
+}: {
+  project: EnrichedProjectProps;
+}) {
   const { links } = project;
 
   // if project created less than 3 days ago, it's a newly added project

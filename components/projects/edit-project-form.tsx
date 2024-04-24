@@ -1,12 +1,9 @@
 "use client";
 
 import { editProject } from "@/lib/actions/edit-project";
-import {
-  EditProjectProps,
-  editProjectSchema,
-} from "@/lib/actions/edit-project-utils";
 import { revalidateProject } from "@/lib/actions/revalidate-project";
-import { ProjectWithLinks } from "@/lib/types";
+import { FormResponse, editProjectSchema } from "@/lib/actions/utils";
+import { EnrichedProjectProps } from "@/lib/types";
 import { Button, useEnterSubmit, useMediaQuery } from "@dub/ui";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AlertCircle } from "lucide-react";
@@ -22,7 +19,7 @@ export default function EditProjectForm({
   props,
   setShowEditProjectModal,
 }: {
-  props: ProjectWithLinks;
+  props: EnrichedProjectProps;
   setShowEditProjectModal: Dispatch<SetStateAction<boolean>>;
 }) {
   const router = useRouter();
@@ -33,13 +30,14 @@ export default function EditProjectForm({
 
   const {
     register,
-    formState: { isValid, isDirty, errors },
+    formState: { errors },
     setError,
+    clearErrors,
   } = useForm<z.infer<typeof editProjectSchema>>({
     resolver: zodResolver(editProjectSchema),
   });
 
-  const [state, formAction] = useFormState<EditProjectProps, FormData>(
+  const [state, formAction] = useFormState<FormResponse, FormData>(
     editProject,
     null,
   );
@@ -85,6 +83,11 @@ export default function EditProjectForm({
                 ? "border-red-300 pr-10 text-red-500 placeholder-red-300 focus:border-red-500 focus:ring-red-500"
                 : "border-gray-300 text-gray-900 placeholder-gray-400 focus:border-gray-500 focus:ring-gray-500"
             } w-full rounded-md focus:outline-none sm:text-sm`}
+            onChange={() => {
+              if (errors.name) {
+                clearErrors("name");
+              }
+            }}
           />
           {errors.name && (
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
@@ -118,6 +121,11 @@ export default function EditProjectForm({
                 ? "border-red-300 pr-10 text-red-500 placeholder-red-300 focus:border-red-500 focus:ring-red-500"
                 : "border-gray-300 text-gray-900 placeholder-gray-400 focus:border-gray-500 focus:ring-gray-500"
             } w-full rounded-md focus:outline-none sm:text-sm`}
+            onChange={() => {
+              if (errors.description) {
+                clearErrors("description");
+              }
+            }}
           />
           {errors.description && (
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
@@ -151,6 +159,11 @@ export default function EditProjectForm({
                 ? "border-red-300 pr-10 text-red-500 placeholder-red-300 focus:border-red-500 focus:ring-red-500"
                 : "border-gray-300 text-gray-900 placeholder-gray-400 focus:border-gray-500 focus:ring-gray-500"
             } w-full rounded-md focus:outline-none sm:text-sm`}
+            onChange={() => {
+              if (errors.github) {
+                clearErrors("github");
+              }
+            }}
           />
           {errors.github && (
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
@@ -180,6 +193,11 @@ export default function EditProjectForm({
                 ? "border-red-300 pr-10 text-red-500 placeholder-red-300 focus:border-red-500 focus:ring-red-500"
                 : "border-gray-300 text-gray-900 placeholder-gray-400 focus:border-gray-500 focus:ring-gray-500"
             } w-full rounded-md focus:outline-none sm:text-sm`}
+            onChange={() => {
+              if (errors.website) {
+                clearErrors("website");
+              }
+            }}
           />
           {errors.website && (
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">

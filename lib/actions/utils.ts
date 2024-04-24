@@ -1,7 +1,7 @@
 import { getUrlFromString, isValidUrl, trim } from "@dub/utils";
 import { z } from "zod";
 
-export type EditProjectProps =
+export type FormResponse =
   | {
       status: "success";
       message: string;
@@ -33,4 +33,12 @@ export const editProjectSchema = z.object({
     .refine((v) => isValidUrl(v), { message: "Invalid website URL" })
     .optional(),
   projectId: z.string().min(8),
+});
+
+export const editTeamSchema = z.object({
+  projectId: z.string().min(8),
+});
+
+export const selectUserSchema = z.object({
+  username: z.string().min(1).max(64),
 });

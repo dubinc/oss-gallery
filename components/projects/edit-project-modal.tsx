@@ -1,6 +1,6 @@
 "use client";
 
-import { ProjectWithLinks } from "@/lib/types";
+import { EnrichedProjectProps } from "@/lib/types";
 import { Modal } from "@dub/ui";
 import Image from "next/image";
 import {
@@ -19,7 +19,7 @@ const EditProjectModal = ({
 }: {
   showEditProjectModal: boolean;
   setShowEditProjectModal: Dispatch<SetStateAction<boolean>>;
-  props: ProjectWithLinks;
+  props: EnrichedProjectProps;
 }) => {
   return (
     <Modal
@@ -45,7 +45,11 @@ const EditProjectModal = ({
   );
 };
 
-export function useEditProjectModal({ props }: { props: ProjectWithLinks }) {
+export function useEditProjectModal({
+  props,
+}: {
+  props: EnrichedProjectProps;
+}) {
   const [showEditProjectModal, setShowEditProjectModal] = useState(false);
 
   const EditProjectModalCallback = useCallback(() => {

@@ -5,13 +5,13 @@ import prisma from "@/lib/prisma";
 import { ZodError } from "zod";
 import { editShortLink } from "../dub";
 import { getRepo } from "../github";
-import { EditProjectProps, editProjectSchema } from "./edit-project-utils";
 import { getProject } from "./get-project";
+import { FormResponse, editProjectSchema } from "./utils";
 
 export async function editProject(
-  prevState: EditProjectProps,
+  _prevState,
   data: FormData,
-): Promise<EditProjectProps> {
+): Promise<FormResponse> {
   try {
     const { name, description, github, website, projectId } =
       editProjectSchema.parse({
@@ -49,13 +49,25 @@ export async function editProject(
       });
 
       if (githubExists) {
-        throw new Error("This GitHub repository is already submitted");
+        throw new ZodError([
+          {
+            path: ["github"],
+            code: "custom",
+            message: "This GitHub repository is already submitted",
+          },
+        ]);
       }
 
       const githubData = await getRepo(github);
 
       if (!githubData.name) {
-        throw new Error("Invalid GitHub repository");
+        throw new ZodError([
+          {
+            path: ["github"],
+            code: "custom",
+            message: "Invalid GitHub repository",
+          },
+        ]);
       }
 
       await editShortLink({
@@ -98,7 +110,7 @@ export async function editProject(
     }
     return {
       status: "error",
-      message: "Something went wrong. Please try again.",
+      message: e.message,
     };
   }
 }

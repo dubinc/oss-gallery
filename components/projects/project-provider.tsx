@@ -1,13 +1,16 @@
 "use client";
 
-import { ProjectWithLinks } from "@/lib/types";
+import { EnrichedProjectProps } from "@/lib/types";
 import { Dispatch, ReactNode, SetStateAction, createContext } from "react";
 import { useEditProjectModal } from "./edit-project-modal";
+import { useEditTeamModal } from "./edit-team-modal";
 
 export const ProjectContext = createContext<{
   setShowEditProjectModal: Dispatch<SetStateAction<boolean>>;
+  setShowEditTeamModal: Dispatch<SetStateAction<boolean>>;
 }>({
   setShowEditProjectModal: () => {},
+  setShowEditTeamModal: () => {},
 });
 
 export default function ProjectProvider({
@@ -15,9 +18,12 @@ export default function ProjectProvider({
   props,
 }: {
   children: ReactNode;
-  props: ProjectWithLinks;
+  props: EnrichedProjectProps;
 }) {
   const { EditProjectModal, setShowEditProjectModal } = useEditProjectModal({
+    props,
+  });
+  const { EditTeamModal, setShowEditTeamModal } = useEditTeamModal({
     props,
   });
 
@@ -25,9 +31,11 @@ export default function ProjectProvider({
     <ProjectContext.Provider
       value={{
         setShowEditProjectModal,
+        setShowEditTeamModal,
       }}
     >
       <EditProjectModal />
+      <EditTeamModal />
       {children}
     </ProjectContext.Provider>
   );

@@ -77,7 +77,7 @@ export default async function ProjectLayout({
         />
         <div className="flex items-center space-x-2 py-2">
           <Suspense>
-            <EditProjectButton projectId={project.id} />
+            <EditProjectButton project={project} />
           </Suspense>
           <a
             href={project.githubLink.shortLink}
@@ -111,7 +111,7 @@ export default async function ProjectLayout({
 
       <ProjectLayoutTabs />
 
-      <div className="mx-4 flex min-h-80 items-center justify-center rounded-xl border border-gray-200 bg-white p-4">
+      <div className="relative mx-4 flex min-h-80 items-center justify-center rounded-xl border border-gray-200 bg-white p-4">
         {children}
       </div>
     </ProjectProvider>
