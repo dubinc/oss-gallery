@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import prisma from "../prisma";
 
 export async function authUser() {
   const session = await auth();
