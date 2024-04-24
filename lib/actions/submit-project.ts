@@ -50,7 +50,7 @@ export async function submitProject(_prevState: any, data: FormData) {
       users: {
         create: {
           userId: session.user.id,
-          role: "Founder",
+          role: "Submitter",
         },
       },
     },
