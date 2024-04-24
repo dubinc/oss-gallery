@@ -9,7 +9,7 @@ import {
   selectUserSchema,
 } from "@/lib/actions/utils";
 import { EnrichedProjectProps } from "@/lib/types";
-import { Button, LoadingSpinner, useMediaQuery } from "@dub/ui";
+import { Button, LoadingSpinner } from "@dub/ui";
 import { cn } from "@dub/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { User } from "@prisma/client";
@@ -32,7 +32,6 @@ export default function EditTeamForm({
   const { users: projectUsers } = props;
   const [users, setUsers] =
     useState<EnrichedProjectProps["users"]>(projectUsers);
-  const { isMobile } = useMediaQuery();
 
   const {
     register,
@@ -79,7 +78,7 @@ export default function EditTeamForm({
           <input
             {...register("username")}
             required
-            autoFocus={!isMobile}
+            autoFocus
             autoComplete="off"
             data-1p-ignore
             placeholder="Search for a user"
