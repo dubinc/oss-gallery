@@ -31,7 +31,7 @@ const EditTeamModal = ({
           width={20}
           height={20}
         />
-        <h3 className="font-display text-xl font-bold">Edit Project</h3>
+        <h3 className="font-display text-xl font-bold">Edit Team</h3>
       </div>
 
       <EditTeamForm props={props} setShowEditTeamModal={setShowEditTeamModal} />

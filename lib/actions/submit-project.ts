@@ -1,5 +1,6 @@
 "use server";
 
+import { PROJECT_GRADIENTS } from "@/components/projects/project-constants";
 import { shortenAndCreateLink } from "@/lib/dub";
 import { getRepo } from "@/lib/github";
 import prisma from "@/lib/prisma";
@@ -42,6 +43,8 @@ export async function submitProject(_prevState: any, data: FormData) {
         ? `${slugify(githubData.name)}-${nanoid(3)}`
         : slugify(githubData.name),
       logo: githubData.logo,
+      gradient:
+        PROJECT_GRADIENTS[Math.floor(Math.random() * PROJECT_GRADIENTS.length)],
       stars: githubData.stars,
       verified: githubData.stars > 1000, // automatically verify projects with > 1000 stars
       users: {
