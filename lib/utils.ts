@@ -3,7 +3,7 @@ import { Metadata } from "next";
 export function constructMetadata({
   title = "OSS Gallery",
   description = "A collection of open-source projects built with Dub.",
-  image = "https://assets.dub.co/thumbnail.jpg",
+  image = null,
 }: {
   title?: string;
   description?: string;
