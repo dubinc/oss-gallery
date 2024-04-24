@@ -59,8 +59,8 @@ async function ProjectAnalyticsRSC({
                 day: "numeric",
               },
         ),
-        [links[0].type]: analytics[0][i].clicks,
-        [links[1].type]: analytics[1][i].clicks,
+        [links[0].type]: analytics[0][i]?.clicks,
+        [links[1].type]: analytics[1][i]?.clicks,
       };
     },
   );
