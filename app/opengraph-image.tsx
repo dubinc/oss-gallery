@@ -27,7 +27,7 @@ export default async function OG() {
         }}
       >
         <img
-          src={`https://${process.env.VERCEL_URL || "precedent.dev"}/logo.png`}
+          src={`https://${process.env.VERCEL_URL || "oss.gallery"}/logo.png`}
           alt="OSS Gallery Logo"
           tw="w-20 h-20 mb-4 opacity-95"
         />
