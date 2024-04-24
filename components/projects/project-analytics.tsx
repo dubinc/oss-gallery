@@ -60,7 +60,9 @@ async function ProjectAnalyticsRSC({
               },
         ),
         [links[0].type]: analytics[0][i]?.clicks,
-        [links[1].type]: analytics[1][i]?.clicks,
+        ...(links[1] && {
+          [links[1].type]: analytics[1][i]?.clicks,
+        }),
       };
     },
   );
@@ -68,7 +70,7 @@ async function ProjectAnalyticsRSC({
   return (
     <ProjectAnalyticsClient
       chartData={chartData}
-      categories={[links[0].type, links[1].type]}
+      categories={[links[0].type, links[1] ? links[1].type : undefined]}
       startEndOnly={newlyAddedProject}
     />
   );
