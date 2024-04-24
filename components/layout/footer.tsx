@@ -5,7 +5,7 @@ export default function Footer() {
         An{" "}
         <a
           className="font-semibold text-gray-600 underline-offset-4 transition-colors hover:underline"
-          href="https://github.com/dubinc/oss-gallery"
+          href="https://go.oss.gallery/github"
           target="_blank"
           rel="noopener noreferrer"
         >
