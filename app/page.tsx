@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <div className="mx-auto w-full max-w-xl px-5 py-10 xl:px-0">
         <a
-          href="https://twitter.com/steventey/status/1613928948915920896"
+          href="https://go.oss.gallery/launch"
           target="_blank"
           rel="noreferrer"
           className="mx-auto mb-5 flex max-w-fit animate-fade-up items-center justify-center space-x-2 overflow-hidden rounded-full border border-gray-200 bg-gray-100 px-7 py-2 transition-colors hover:bg-gray-50"
