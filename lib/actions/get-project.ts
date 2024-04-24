@@ -26,6 +26,7 @@ export const getProject = cache(
         },
       },
     });
+    if (!project) return null;
     const githubLink = project.links.find((link) => link.type === "GITHUB")!;
     const websiteLink = project.links.find((link) => link.type === "WEBSITE");
     return {
