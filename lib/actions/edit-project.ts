@@ -1,15 +1,15 @@
 "use server";
 
-import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
 import { ZodError } from "zod";
 import { editShortLink } from "../dub";
 import { getRepo } from "../github";
+import { authProject } from "./auth";
 import { getProject } from "./get-project";
 import { FormResponse, editProjectSchema } from "./utils";
 
 export async function editProject(
-  _prevState,
+  _prevState: any,
   data: FormData,
 ): Promise<FormResponse> {
   try {
@@ -22,24 +22,7 @@ export async function editProject(
         projectId: data.get("projectId"),
       });
 
-    const session = await auth();
-
-    if (!session?.user?.id) {
-      throw new Error("You need to be logged in to edit a project");
-    }
-
-    const userIsProjectMember = await prisma.projectUser.findUnique({
-      where: {
-        projectId_userId: {
-          projectId,
-          userId: session.user.id,
-        },
-      },
-    });
-
-    if (!userIsProjectMember) {
-      throw new Error("You need to be a member of this project to edit it");
-    }
+    await authProject({ projectId });
 
     const props = await getProject({ id: projectId });
 

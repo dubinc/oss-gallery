@@ -73,7 +73,8 @@ model Project {
   description String
   logo        String
   image       String?
-  stars       Int       @default(0)
+  gradient    String     @default("from-purple-100 via-violet-50 to-blue-100")
+  stars       Int        @default(0)
   links       Link[]
   bookmarkers Bookmark[]
 

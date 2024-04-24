@@ -1,9 +1,9 @@
 "use server";
 
-import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
 import { ZodError } from "zod";
 import { EnrichedProjectProps } from "../types";
+import { authProject } from "./auth";
 import { FormResponse, editTeamSchema } from "./utils";
 
 export async function editTeam(
@@ -16,24 +16,7 @@ export async function editTeam(
       projectId: data.get("projectId"),
     });
 
-    const session = await auth();
-
-    if (!session?.user?.id) {
-      throw new Error("You need to be logged in to edit a project");
-    }
-
-    const userIsProjectMember = await prisma.projectUser.findUnique({
-      where: {
-        projectId_userId: {
-          projectId,
-          userId: session.user.id,
-        },
-      },
-    });
-
-    if (!userIsProjectMember) {
-      throw new Error("You need to be a member of this project to edit it");
-    }
+    await authProject({ projectId });
 
     await Promise.all([
       prisma.projectUser.deleteMany({

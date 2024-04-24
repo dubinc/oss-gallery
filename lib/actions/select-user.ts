@@ -1,13 +1,13 @@
 "use server";
 
-import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
 import { User } from "@prisma/client";
 import { ZodError } from "zod";
+import { authUser } from "./auth";
 import { FormResponse, selectUserSchema } from "./utils";
 
 export async function selectUser(
-  _prevState,
+  _prevState: any,
   data: FormData,
 ): Promise<FormResponse & { user?: User }> {
   try {
@@ -15,11 +15,7 @@ export async function selectUser(
       username: data.get("username"),
     });
 
-    const session = await auth();
-
-    if (!session?.user?.id) {
-      throw new Error("You need to be logged in to edit a project");
-    }
+    await authUser();
 
     const user = await prisma.user.findUnique({
       where: { username },

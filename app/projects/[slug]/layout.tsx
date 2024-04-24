@@ -1,3 +1,4 @@
+import EditGradientPopover from "@/components/projects/edit-gradient-popover";
 import EditProjectButton from "@/components/projects/edit-project-button";
 import ProjectLayoutTabs from "@/components/projects/project-layout-tabs";
 import ProjectProvider from "@/components/projects/project-provider";
@@ -6,7 +7,7 @@ import { getProject } from "@/lib/actions/get-project";
 import { getRepo } from "@/lib/github";
 import prisma from "@/lib/prisma";
 import { constructMetadata } from "@/lib/utils";
-import { nFormatter } from "@dub/utils";
+import { cn, nFormatter } from "@dub/utils";
 import { BadgeCheck, Globe, Star } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -66,8 +67,17 @@ export default async function ProjectLayout({
 
   return (
     <ProjectProvider props={project}>
-      <div className="aspect-[4/1] w-full rounded-t-2xl bg-gradient-to-tr from-purple-100 via-violet-50 to-blue-100" />
-      <div className="-mt-8 flex items-center justify-between px-4 sm:-mt-12 sm:items-end md:pr-0">
+      <div
+        className={cn(
+          "relative aspect-[4/1] w-full rounded-t-2xl bg-gradient-to-tr",
+          project.gradient,
+        )}
+      >
+        <Suspense>
+          <EditGradientPopover project={project} />
+        </Suspense>
+      </div>
+      <div className="relative -mt-8 flex items-center justify-between px-4 sm:-mt-12 sm:items-end md:pr-0">
         <Image
           src={project.logo}
           alt={project.name}

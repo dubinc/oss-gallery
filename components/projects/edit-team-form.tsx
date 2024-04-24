@@ -36,7 +36,7 @@ export default function EditTeamForm({
 
   const {
     register,
-    formState: { errors, isLoading },
+    formState: { errors },
     setError,
     clearErrors,
   } = useForm<z.infer<typeof selectUserSchema>>({

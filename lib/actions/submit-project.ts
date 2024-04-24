@@ -1,18 +1,14 @@
 "use server";
 
-import { auth } from "@/auth";
 import { shortenAndCreateLink } from "@/lib/dub";
 import { getRepo } from "@/lib/github";
 import prisma from "@/lib/prisma";
 import { getUrlFromString, nanoid } from "@dub/utils";
 import slugify from "@sindresorhus/slugify";
+import { authUser } from "./auth";
 
 export async function submitProject(_prevState: any, data: FormData) {
-  const session = await auth();
-
-  if (!session?.user?.id) {
-    return { error: "You need to be logged in to submit a project" };
-  }
+  const session = await authUser();
 
   const github = getUrlFromString(data.get("github") as string);
 

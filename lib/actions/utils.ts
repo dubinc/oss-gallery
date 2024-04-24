@@ -1,3 +1,4 @@
+import { PROJECT_GRADIENTS } from "@/components/projects/project-constants";
 import { getUrlFromString, isValidUrl, trim } from "@dub/utils";
 import { z } from "zod";
 
@@ -41,4 +42,9 @@ export const editTeamSchema = z.object({
 
 export const selectUserSchema = z.object({
   username: z.string().min(1).max(64),
+});
+
+export const editGradientSchema = z.object({
+  gradient: z.enum(PROJECT_GRADIENTS as [string, ...string[]]),
+  projectId: z.string().min(8),
 });
