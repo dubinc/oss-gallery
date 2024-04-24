@@ -3,6 +3,7 @@
 import { useSignInModal } from "@/components/layout/sign-in-modal";
 import { useSubmitProjectModal } from "@/components/projects/submit-project-modal";
 import { TooltipProvider } from "@dub/ui";
+import { Analytics } from "@vercel/analytics/react";
 import { SessionProvider } from "next-auth/react";
 import { Dispatch, ReactNode, SetStateAction, createContext } from "react";
 import { Toaster } from "sonner";
@@ -33,6 +34,7 @@ export default function Providers({ children }: { children: ReactNode }) {
           <SubmitProjectModal />
           <Toaster closeButton />
           {children}
+          <Analytics />
         </TooltipProvider>
       </AppContext.Provider>
     </SessionProvider>

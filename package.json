@@ -20,6 +20,7 @@
     "@prisma/client": "^4.16.2",
     "@sindresorhus/slugify": "^2.2.1",
     "@tremor/react": "^3.16.1",
+    "@vercel/analytics": "^1.2.2",
     "class-variance-authority": "^0.7.0",
     "dub": "^0.24.4",
     "framer-motion": "^11.1.7",

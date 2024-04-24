@@ -32,6 +32,9 @@ dependencies:
   '@tremor/react':
     specifier: ^3.16.1
     version: 3.16.1(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.4.3)
+  '@vercel/analytics':
+    specifier: ^1.2.2
+    version: 1.2.2(next@14.3.0-canary.11)(react@18.2.0)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
