@@ -35,7 +35,6 @@ export async function generateStaticParams() {
     where: {
       verified: true,
     },
-    take: 5,
   });
   return projects.map(({ slug }) => ({
     slug,
@@ -126,7 +125,7 @@ export default async function ProjectLayout({
 
       <ProjectLayoutTabs />
 
-      <div className="relative mx-4 flex min-h-80 items-center justify-center rounded-xl border border-gray-200 bg-white p-4">
+      <div className="relative mx-4 flex min-h-[22rem] items-center justify-center rounded-xl border border-gray-200 bg-white p-4">
         {children}
       </div>
     </ProjectProvider>

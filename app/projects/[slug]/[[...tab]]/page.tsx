@@ -1,8 +1,14 @@
-import ProjectAnalytics from "@/components/projects/project-analytics";
 import { PROJECT_TABS } from "@/components/projects/project-constants";
 import ProjectTeam from "@/components/projects/project-team";
 import { getProject } from "@/lib/actions/get-project";
+import { LoadingSpinner } from "@dub/ui";
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
+
+const ProjectAnalytics = dynamic(
+  () => import("@/components/projects/project-analytics"),
+  { ssr: false, loading: () => <LoadingSpinner /> },
+);
 
 export async function generateStaticParams() {
   return [

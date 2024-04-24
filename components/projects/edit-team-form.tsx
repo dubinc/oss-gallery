@@ -13,7 +13,7 @@ import { Button, LoadingSpinner, useMediaQuery } from "@dub/ui";
 import { cn } from "@dub/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { User } from "@prisma/client";
-import { AlertCircle, X } from "lucide-react";
+import { AlertCircle, CornerDownLeft, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
@@ -165,13 +165,18 @@ export default function EditTeamForm({
 
 const LoadingInput = () => {
   const { pending } = useFormStatus();
-  if (pending) {
-    return (
-      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+
+  return (
+    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+      {pending ? (
         <LoadingSpinner />
-      </div>
-    );
-  }
+      ) : (
+        <div className="rounded-lg border border-gray-300 px-2 py-1">
+          <CornerDownLeft className="h-3.5 w-3.5 text-gray-400" />
+        </div>
+      )}
+    </div>
+  );
 };
 
 const EditTeamFormPseudo = ({

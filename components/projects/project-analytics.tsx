@@ -1,7 +1,5 @@
 import { dub } from "@/lib/dub";
 import { EnrichedProjectProps } from "@/lib/types";
-import { LoadingSpinner } from "@dub/ui";
-import { Suspense } from "react";
 import ProjectAnalyticsClient from "./project-analytics-client";
 
 export default function ProjectAnalytics({
@@ -9,11 +7,7 @@ export default function ProjectAnalytics({
 }: {
   project: EnrichedProjectProps;
 }) {
-  return (
-    <Suspense fallback={<LoadingSpinner />}>
-      <ProjectAnalyticsRSC project={project} />
-    </Suspense>
-  );
+  return <ProjectAnalyticsRSC project={project} />;
 }
 
 async function ProjectAnalyticsRSC({
