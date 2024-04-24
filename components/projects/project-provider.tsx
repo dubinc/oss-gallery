@@ -6,9 +6,11 @@ import { useEditProjectModal } from "./edit-project-modal";
 import { useEditTeamModal } from "./edit-team-modal";
 
 export const ProjectContext = createContext<{
+  props: EnrichedProjectProps;
   setShowEditProjectModal: Dispatch<SetStateAction<boolean>>;
   setShowEditTeamModal: Dispatch<SetStateAction<boolean>>;
 }>({
+  props: {} as EnrichedProjectProps,
   setShowEditProjectModal: () => {},
   setShowEditTeamModal: () => {},
 });
@@ -30,6 +32,7 @@ export default function ProjectProvider({
   return (
     <ProjectContext.Provider
       value={{
+        props,
         setShowEditProjectModal,
         setShowEditTeamModal,
       }}

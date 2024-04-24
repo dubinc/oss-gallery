@@ -7,7 +7,6 @@ export default function Footer() {
           className="font-semibold text-gray-600 underline-offset-4 transition-colors hover:underline"
           href="https://go.oss.gallery/github"
           target="_blank"
-          rel="noopener noreferrer"
         >
           open-source
         </a>{" "}
@@ -16,9 +15,8 @@ export default function Footer() {
           className="font-semibold text-gray-600 underline-offset-4 transition-colors hover:underline"
           href="https://dub.co/api"
           target="_blank"
-          rel="noopener noreferrer"
         >
-          Dub.co API
+          Dub API
         </a>
       </p>
     </div>
