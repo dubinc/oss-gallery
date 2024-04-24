@@ -38,7 +38,7 @@ export async function submitProject(_prevState: any, data: FormData) {
   const project = await prisma.project.create({
     data: {
       name: githubData.name,
-      description: githubData.description,
+      description: githubData.description || "",
       slug: slugExists
         ? `${slugify(githubData.name)}-${nanoid(3)}`
         : slugify(githubData.name),
