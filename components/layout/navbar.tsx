@@ -25,7 +25,7 @@ export default function NavBar({ session }: { session: Session | null }) {
         >
           <Image
             src="/logo.png"
-            alt="Precedent logo"
+            alt="OSS Gallery logo"
             width="30"
             height="30"
             className="mr-2 rounded-sm"

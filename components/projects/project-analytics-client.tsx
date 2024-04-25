@@ -5,7 +5,7 @@ import { nFormatter } from "@dub/utils";
 import { AreaChart } from "@tremor/react";
 import { RefreshCcw } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useTransition } from "react";
+import { useTransition } from "react";
 import { buttonLinkVariants } from "../ui/button-link";
 
 export default function ProjectAnalyticsClient({
@@ -25,10 +25,6 @@ export default function ProjectAnalyticsClient({
       router.refresh();
     });
   };
-
-  useEffect(() => {
-    refreshData();
-  }, []);
 
   return (
     <div className="w-full">

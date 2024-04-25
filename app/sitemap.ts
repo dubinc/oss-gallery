@@ -1,22 +1,23 @@
-import { MetadataRoute } from "next";
 import prisma from "@/lib/prisma";
+import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const users = await prisma.user.findMany({
+  const projects = await prisma.project.findMany({
     select: {
-      id: true,
+      slug: true,
+      updatedAt: true,
     },
     take: 1,
   });
 
   return [
     {
-      url: "https://precedent.dev",
+      url: "https://oss.gallery",
       lastModified: new Date(),
     },
-    ...users.map((user) => ({
-      url: `https://precedent.dev/${user.id}`,
-      lastModified: new Date(),
+    ...projects.map((project) => ({
+      url: `https://oss.gallery/projects/${project.slug}`,
+      lastModified: project.updatedAt,
     })),
   ];
 }
