@@ -40,7 +40,7 @@ export default function ProjectLayoutTabs() {
   );
 }
 
-const TabLink = ({
+export const TabLink = ({
   title,
   href,
   active,

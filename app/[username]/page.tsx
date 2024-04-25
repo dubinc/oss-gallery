@@ -1,3 +1,5 @@
+import ProjectCard from "@/components/projects/project-card";
+import { TabLink } from "@/components/projects/project-layout-tabs";
 import prisma from "@/lib/prisma";
 import { constructMetadata } from "@/lib/utils";
 import { BadgeCheck } from "lucide-react";
@@ -43,11 +45,20 @@ export default async function Profile({
     where: {
       username,
     },
+    include: {
+      projects: {
+        select: {
+          project: true,
+        },
+      },
+    },
   });
 
   if (!user) {
     notFound();
   }
+
+  const { projects } = user;
 
   return (
     <div>
@@ -66,6 +77,14 @@ export default async function Profile({
           <h1 className="font-display text-3xl font-bold">{user.name}</h1>
           <BadgeCheck className="h-8 w-8 text-white" fill="#1c9bef" />
         </div>
+      </div>
+      <div className="mb-4 flex items-center p-4">
+        <TabLink title="Projects" href={`/${username}`} active />
+      </div>
+      <div className="mx-5 grid grid-cols-1 gap-4 p-4 md:mx-0 md:grid-cols-2 lg:grid-cols-3">
+        {projects.map(({ project }) => (
+          <ProjectCard key={project.id} {...project} />
+        ))}
       </div>
     </div>
   );
