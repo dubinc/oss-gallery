@@ -2,12 +2,21 @@
 
 import { Session } from "@/lib/auth";
 import { useScroll } from "@dub/ui";
+import { cn, nFormatter } from "@dub/utils";
+import { Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SubmitProjectButton } from "../projects/submit-project-button";
+import { buttonLinkVariants } from "../ui/button-link";
 import UserDropdown from "./user-dropdown";
 
-export default function NavBar({ session }: { session: Session | null }) {
+export default function NavBar({
+  session,
+  stars,
+}: {
+  session: Session | null;
+  stars: number;
+}) {
   const scrolled = useScroll(50);
 
   return (
@@ -33,6 +42,17 @@ export default function NavBar({ session }: { session: Session | null }) {
           <p>OSS Gallery</p>
         </Link>
         <div className="flex items-center space-x-2">
+          <a
+            href="https://go.oss.gallery/github"
+            target="_blank"
+            className={cn(
+              buttonLinkVariants({ variant: "secondary" }),
+              "px-3 py-1.5",
+            )}
+          >
+            <Star className="h-4 w-4" />
+            <p className="text-sm">{nFormatter(stars, { full: true })}</p>
+          </a>
           <SubmitProjectButton />
           {session && <UserDropdown session={session} />}
         </div>
