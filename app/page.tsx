@@ -1,6 +1,7 @@
 import ProjectList from "@/components/projects/project-list";
-import { SubmitProjectButton } from "@/components/projects/submit-project-button";
+import SearchBar, { SearchBarPlaceholder } from "@/components/ui/search-box";
 import { Twitter } from "@dub/ui";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -34,7 +35,9 @@ export default function Home() {
           className="mx-auto mt-6 flex animate-fade-up items-center justify-center space-x-5 opacity-0"
           style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
         >
-          <SubmitProjectButton text="Submit your project" />
+          <Suspense fallback={<SearchBarPlaceholder />}>
+            <SearchBar />
+          </Suspense>
         </div>
       </div>
 
