@@ -42,6 +42,8 @@ async function ProjectAnalyticsRSC({
       }),
   );
 
+  console.log("Refreshed analytics data");
+
   const chartData = analytics[0].map(
     (data: { start: string; clicks: number }, i) => {
       return {
