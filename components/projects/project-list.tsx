@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma";
 import { Suspense } from "react";
-import ProjectCard from "./project-card";
+import ProjectGrid from "./project-grid";
 
 export default function ProjectList() {
   return (
@@ -11,6 +11,7 @@ export default function ProjectList() {
 }
 
 async function ProjectListRSC() {
+  const featured = ["dub", "ui", "next"];
   const projects = await prisma.project.findMany({
     where: {
       verified: true,
@@ -20,11 +21,23 @@ async function ProjectListRSC() {
     },
   });
 
+  const featuredProjects = featured.map((slug) =>
+    projects.find((project) => project.slug === slug),
+  );
+
   return (
-    <div className="mx-5 grid grid-cols-1 gap-4 md:mx-0 md:grid-cols-2 lg:grid-cols-3">
-      {projects.map((project) => (
-        <ProjectCard key={project.id} {...project} />
-      ))}
+    <div className="mx-5 md:mx-0">
+      <div className="grid gap-4">
+        <h2 className="font-display text-2xl font-semibold">Featured</h2>
+        <ProjectGrid projects={featuredProjects} />
+      </div>
+
+      <div className="mb-8 mt-12 border-t border-gray-200" />
+
+      <div className="grid gap-4">
+        <h2 className="font-display text-2xl">All Projects</h2>
+        <ProjectGrid projects={projects} />
+      </div>
     </div>
   );
 }

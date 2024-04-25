@@ -1,4 +1,4 @@
-import ProjectCard from "@/components/projects/project-card";
+import ProjectGrid from "@/components/projects/project-grid";
 import { TabLink } from "@/components/projects/project-layout-tabs";
 import prisma from "@/lib/prisma";
 import { constructMetadata } from "@/lib/utils";
@@ -81,11 +81,10 @@ export default async function Profile({
       <div className="mb-4 flex items-center p-4">
         <TabLink title="Projects" href={`/${username}`} active />
       </div>
-      <div className="mx-5 grid grid-cols-1 gap-4 p-4 md:mx-0 md:grid-cols-2 lg:grid-cols-3">
-        {projects.map(({ project }) => (
-          <ProjectCard key={project.id} {...project} />
-        ))}
-      </div>
+      <ProjectGrid
+        projects={projects.map(({ project }) => project)}
+        className="mx-5 p-4 md:mx-0"
+      />
     </div>
   );
 }
