@@ -16,7 +16,7 @@ export default function ProjectLayoutTabs() {
   return (
     <div className="my-4 flex flex-col space-y-6 p-4">
       <div className="flex items-center">
-        <TabLink title="Analytics" href={`/projects/${slug}`} active={!tab} />
+        <TabLink title="Overview" href={`/projects/${slug}`} active={!tab} />
         {PROJECT_TABS.map((t) => (
           <TabLink
             key={t.tab}
