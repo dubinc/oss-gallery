@@ -3,6 +3,7 @@ import { EnrichedProjectProps } from "@/lib/types";
 import { LoadingSpinner } from "@dub/ui";
 import { Suspense } from "react";
 import ProjectAnalyticsClient from "./project-analytics-client";
+import ProjectContentWrapper from "./project-content-wrapper";
 
 export default function ProjectAnalytics({
   project,
@@ -10,9 +11,11 @@ export default function ProjectAnalytics({
   project: EnrichedProjectProps;
 }) {
   return (
-    <Suspense fallback={<LoadingSpinner />}>
-      <ProjectAnalyticsRSC project={project} />
-    </Suspense>
+    <ProjectContentWrapper className="min-h-[22rem]">
+      <Suspense fallback={<LoadingSpinner />}>
+        <ProjectAnalyticsRSC project={project} />
+      </Suspense>
+    </ProjectContentWrapper>
   );
 }
 
@@ -41,8 +44,6 @@ async function ProjectAnalyticsRSC({
         });
       }),
   );
-
-  console.log("Refreshed analytics data");
 
   const chartData = analytics[0].map(
     (data: { start: string; clicks: number }, i) => {

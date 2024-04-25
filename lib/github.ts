@@ -22,6 +22,7 @@ export async function getRepo(url: string) {
     owner,
     stargazers_count: stars,
     forks,
+    default_branch,
   } = data;
 
   return {
@@ -32,5 +33,6 @@ export async function getRepo(url: string) {
     homepage,
     stars,
     forks,
+    default_branch,
   };
 }

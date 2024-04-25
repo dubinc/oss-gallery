@@ -32,7 +32,10 @@ export default function ProjectAnalyticsClient({
 
   return (
     <div className="w-full">
-      <div className="mb-2 flex justify-end">
+      <div className="flex items-center justify-between p-4">
+        <h2 className="text-lg font-medium text-gray-700">
+          Real-time click analytics
+        </h2>
         <button
           onClick={refreshData}
           disabled={isPending}

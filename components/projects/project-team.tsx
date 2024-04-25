@@ -2,6 +2,7 @@ import { EnrichedProjectProps } from "@/lib/types";
 import { cn } from "@dub/utils";
 import Link from "next/link";
 import EditTeamButton from "./edit-team-button";
+import ProjectContentWrapper from "./project-content-wrapper";
 
 export default function ProjectTeam({
   project,
@@ -11,7 +12,7 @@ export default function ProjectTeam({
   const { users } = project;
 
   return (
-    <>
+    <ProjectContentWrapper className="min-h-[22rem]">
       <div className="absolute right-4 top-4">
         <EditTeamButton project={project} />
       </div>
@@ -42,6 +43,6 @@ export default function ProjectTeam({
           </div>
         ))}
       </div>
-    </>
+    </ProjectContentWrapper>
   );
 }

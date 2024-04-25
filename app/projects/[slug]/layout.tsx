@@ -4,7 +4,6 @@ import ProjectLayoutTabs from "@/components/projects/project-layout-tabs";
 import ProjectProvider from "@/components/projects/project-provider";
 import { buttonLinkVariants } from "@/components/ui/button-link";
 import { getProject } from "@/lib/actions/get-project";
-import { getRepo } from "@/lib/github";
 import prisma from "@/lib/prisma";
 import { constructMetadata } from "@/lib/utils";
 import { cn, nFormatter } from "@dub/utils";
@@ -57,19 +56,6 @@ export default async function ProjectLayout({
     notFound();
   }
 
-  const { stars } = await getRepo(project.githubLink.url);
-
-  if (stars !== project.stars) {
-    await prisma.project.update({
-      where: {
-        slug,
-      },
-      data: {
-        stars,
-      },
-    });
-  }
-
   return (
     <ProjectProvider props={project}>
       <div
@@ -100,7 +86,9 @@ export default async function ProjectLayout({
             className={buttonLinkVariants({ variant: "secondary" })}
           >
             <Star className="h-4 w-4" />
-            <p className="text-sm">{nFormatter(stars, { full: true })}</p>
+            <p className="text-sm">
+              {nFormatter(project.stars, { full: true })}
+            </p>
           </a>
           {project.websiteLink && (
             <a
@@ -126,9 +114,7 @@ export default async function ProjectLayout({
 
       <ProjectLayoutTabs />
 
-      <div className="relative mx-4 flex min-h-[22rem] items-center justify-center rounded-xl border border-gray-200 bg-white p-4">
-        {children}
-      </div>
+      {children}
     </ProjectProvider>
   );
 }
