@@ -18,7 +18,5 @@ async function NavRSC() {
     getRepo("https://github.com/dubinc/oss-gallery"),
   ])) as [Session, { stars: number }];
 
-  console.log({ stars });
-
   return <Navbar session={session} stars={stars} />;
 }

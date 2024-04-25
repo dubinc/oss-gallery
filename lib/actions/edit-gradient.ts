@@ -10,7 +10,6 @@ export async function editGradient(
   data: FormData,
 ): Promise<FormResponse> {
   try {
-    console.log(data.get("gradient"));
     const { gradient, projectId } = editGradientSchema.parse({
       gradient: data.get("gradient"),
       projectId: data.get("projectId"),
