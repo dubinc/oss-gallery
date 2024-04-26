@@ -35,3 +35,10 @@ export function constructMetadata({
     metadataBase: new URL("https://oss.gallery"),
   };
 }
+
+export const getUrlWithRef = (url: string) => {
+  const urlWithRef = new URL(url);
+  urlWithRef.searchParams.set("ref", "ossgallery");
+
+  return urlWithRef.toString();
+};
