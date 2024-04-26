@@ -38,7 +38,7 @@ export async function generateStaticParams() {
     where: {
       verified: true,
     },
-    take: 150,
+    take: 100,
   });
   return projects.map(({ slug }) => ({
     slug,
