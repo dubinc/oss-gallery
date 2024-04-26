@@ -27,7 +27,7 @@
 
 OSS Gallery is a crowdsourced list of the best open-source projects on the internet.
 
-It dogfoods the [Dub.co API](https://dub.co/docs/api-reference/introduction) to create short links for each project page + display real-time click analytics for them 📈
+It uses the [Dub.co API](https://dub.co/docs/api-reference/introduction) to create short links for each project page + display real-time click analytics for them.
 
 <img width="1062" alt="CleanShot 2024-04-24 at 20 15 09@2x" src="https://github.com/dubinc/oss-gallery/assets/28986134/7d2ff6e6-cdb2-4818-88f9-ce3e6518c09d">
 
