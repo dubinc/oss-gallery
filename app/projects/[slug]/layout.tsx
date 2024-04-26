@@ -4,6 +4,7 @@ import ProjectLayoutTabs from "@/components/projects/project-layout-tabs";
 import ProjectProvider from "@/components/projects/project-provider";
 import { buttonLinkVariants } from "@/components/ui/button-link";
 import { getProject } from "@/lib/actions/get-project";
+import { dub } from "@/lib/dub";
 import { getRepo } from "@/lib/github";
 import prisma from "@/lib/prisma";
 import { constructMetadata } from "@/lib/utils";
@@ -12,6 +13,8 @@ import { BadgeCheck, Globe, Star } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+
+export const revalidate = 3600;
 
 export async function generateMetadata({
   params: { slug },
@@ -35,7 +38,7 @@ export async function generateStaticParams() {
     where: {
       verified: true,
     },
-    take: 200,
+    take: 150,
   });
   return projects.map(({ slug }) => ({
     slug,
@@ -59,13 +62,25 @@ export default async function ProjectLayout({
 
   const { stars } = await getRepo(project.githubLink.url);
 
-  if (stars !== project.stars) {
+  const clicks = await Promise.all([
+    dub.analytics.clicks({
+      externalId: `ext_${project.githubLink.id}`,
+    }),
+    project.websiteLink &&
+      dub.analytics.clicks({
+        externalId: `ext_${project.websiteLink.id}`,
+      }),
+  ]);
+  const totalClicks = clicks.reduce((acc, curr) => acc + curr, 0);
+
+  if (stars !== project.stars || totalClicks !== project.clicks) {
     await prisma.project.update({
       where: {
         slug,
       },
       data: {
-        stars,
+        ...(stars !== project.stars && { stars }),
+        ...(totalClicks !== project.clicks && { clicks: totalClicks }),
       },
     });
   }

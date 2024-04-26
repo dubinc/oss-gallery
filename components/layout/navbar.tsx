@@ -4,7 +4,6 @@ import { Session } from "@/lib/auth";
 import { useScroll } from "@dub/ui";
 import { cn, nFormatter } from "@dub/utils";
 import { Star } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { SubmitProjectButton } from "../projects/submit-project-button";
 import { buttonLinkVariants } from "../ui/button-link";
@@ -28,18 +27,8 @@ export default function NavBar({
       } z-30 transition-all`}
     >
       <div className="mx-5 flex h-16 w-full max-w-screen-md items-center justify-between">
-        <Link
-          href="/"
-          className="flex items-center font-display text-lg font-semibold"
-        >
-          <Image
-            src="/logo.png"
-            alt="OSS Gallery logo"
-            width="30"
-            height="30"
-            className="mr-2 rounded-sm"
-          />
-          <p>OSS Gallery</p>
+        <Link href="/">
+          <img src="/logomark.svg" alt="OSS Gallery logo" className="h-8" />
         </Link>
         <div className="flex items-center space-x-2">
           <a

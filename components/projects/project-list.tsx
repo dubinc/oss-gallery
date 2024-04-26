@@ -11,7 +11,7 @@ export default function ProjectList() {
 }
 
 async function ProjectListRSC() {
-  const featured = ["dub", "ui", "next"];
+  const featured = ["gallery", "dub", "ui"];
   const projects = await prisma.project.findMany({
     where: {
       verified: true,
