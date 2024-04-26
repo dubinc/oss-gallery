@@ -62,28 +62,33 @@ export default async function ProjectLayout({
 
   const { stars } = await getRepo(project.githubLink.url);
 
-  const clicks = await Promise.all([
-    dub.analytics.clicks({
-      externalId: `ext_${project.githubLink.id}`,
-    }),
-    project.websiteLink &&
-      dub.analytics.clicks({
-        externalId: `ext_${project.websiteLink.id}`,
-      }),
-  ]);
-  const totalClicks = clicks.reduce((acc, curr) => acc + curr, 0);
+  let totalClicks: number | null = null;
 
-  if (stars !== project.stars || totalClicks !== project.clicks) {
-    await prisma.project.update({
-      where: {
-        slug,
-      },
-      data: {
-        ...(stars !== project.stars && { stars }),
-        ...(totalClicks !== project.clicks && { clicks: totalClicks }),
-      },
-    });
+  try {
+    const clicks = await Promise.all([
+      dub.analytics.clicks({
+        externalId: `ext_${project.githubLink.id}`,
+      }),
+      project.websiteLink &&
+        dub.analytics.clicks({
+          externalId: `ext_${project.websiteLink.id}`,
+        }),
+    ]);
+    totalClicks = clicks.reduce((acc, curr) => acc + curr, 0);
+  } catch (e) {
+    console.error(e);
   }
+
+  await prisma.project.update({
+    where: {
+      slug,
+    },
+    data: {
+      ...(stars !== project.stars && { stars }),
+      ...(totalClicks &&
+        totalClicks !== project.clicks && { clicks: totalClicks }),
+    },
+  });
 
   return (
     <ProjectProvider props={project}>
