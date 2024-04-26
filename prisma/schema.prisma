@@ -75,6 +75,7 @@ model Project {
   image       String?
   gradient    String     @default("from-purple-100 via-violet-50 to-blue-100")
   stars       Int        @default(0)
+  clicks      Int        @default(0)
   links       Link[]
   bookmarkers Bookmark[]
 
