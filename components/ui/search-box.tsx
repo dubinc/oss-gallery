@@ -1,13 +1,21 @@
 "use client";
 
-import { useRouterStuff } from "@dub/ui";
 import { Link2 } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 
 export default function SearchBar() {
-  const { queryParams } = useRouterStuff();
   const searchParams = useSearchParams();
   const q = searchParams?.get("q");
+
+  function search(query: string) {
+    const params = new URLSearchParams(searchParams.toString());
+    if (query) {
+      params.set("q", query);
+    } else {
+      params.delete("q");
+    }
+    window.history.replaceState(null, "", `?${params.toString()}`);
+  }
 
   return (
     <div className="relative flex w-full max-w-md items-center">
@@ -19,18 +27,7 @@ export default function SearchBar() {
         placeholder="Search for a project"
         defaultValue={q}
         onChange={(e) => {
-          queryParams({
-            ...(e.target.value.length > 0
-              ? {
-                  set: {
-                    q: e.target.value,
-                  },
-                }
-              : {
-                  del: "q",
-                }),
-            replace: true,
-          });
+          search(e.target.value);
         }}
         aria-invalid="true"
       />
