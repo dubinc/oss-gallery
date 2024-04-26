@@ -14,7 +14,10 @@ export default async function EditGradientPopover({
     return null;
   }
 
-  if (users.some((user) => user.id === session.user.id)) {
+  if (
+    session.user.id === process.env.ADMIN_ID ||
+    users.some((user) => user.id === session.user.id)
+  ) {
     return (
       <div className="absolute bottom-2 right-2 z-10">
         <EditGradientPopoverClient project={project} />
