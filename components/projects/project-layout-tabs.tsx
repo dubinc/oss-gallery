@@ -32,7 +32,7 @@ export default function ProjectLayoutTabs() {
           ? tab[0] === "team"
             ? `Active team members of the project. View the full list on [GitHub](${props.githubLink.shortLink}).`
             : tab[0] === "contributors"
-              ? `Top contributors of the project – powered by [contrib.rocks](https://contrib.rocks). View the full list on [GitHub](${props.githubLink.shortLink}).`
+              ? `Top contributors of the project. View the full list on [GitHub](${props.githubLink.shortLink}).`
               : ""
           : "Real-time click analytics for each of the links above – powered by the [Dub API](https://dub.co/api)."}
       </ProjectTabNote>
