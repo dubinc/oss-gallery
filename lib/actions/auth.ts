@@ -14,6 +14,10 @@ export async function authUser() {
 export async function authProject({ projectId }: { projectId: string }) {
   const session = await authUser();
 
+  if (session?.user?.id === process.env.ADMIN_ID) {
+    return true;
+  }
+
   const userIsProjectMember = await prisma.projectUser.findUnique({
     where: {
       projectId_userId: {
