@@ -1,5 +1,6 @@
 "use server";
-import { Octokit } from "@octokit/rest";
+
+import { octokit } from "../github";
 
 export interface ContribInfo {
   login: string;
@@ -24,10 +25,6 @@ export interface ContribInfo {
 }
 
 export async function getContribs(owner: string, repo: string) {
-  const octokit = new Octokit({
-    auth: process.env.GITHUB_OAUTH_TOKEN,
-  });
-
   const res = await octokit.repos.listContributors({
     owner,
     repo,

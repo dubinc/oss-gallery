@@ -1,4 +1,9 @@
 import { GOOGLE_FAVICON_URL } from "@dub/utils";
+import { Octokit } from "@octokit/rest";
+
+export const octokit = new Octokit({
+  auth: process.env.GITHUB_OAUTH_TOKEN,
+});
 
 export async function getRepo(url: string) {
   const repo = url.replace("https://github.com/", "");
