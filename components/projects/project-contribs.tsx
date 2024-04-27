@@ -1,10 +1,10 @@
 "use client";
 
 import { ContribInfo } from "@/lib/actions/get-contribs";
+import { Github } from "@dub/ui";
 import { cn } from "@dub/utils";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 export function Contribs({
   contribs,
@@ -47,7 +47,12 @@ export function Contrib({ info }: { info: ContribInfo }) {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <Link key={info.id} className="flex items-center" href={info.html_url}>
+      <a
+        key={info.id}
+        className="flex items-center"
+        href={info.html_url}
+        target="_blank"
+      >
         <motion.div
           variants={{
             initial: { scale: 1 },
@@ -70,7 +75,7 @@ export function Contrib({ info }: { info: ContribInfo }) {
           />
         </motion.div>
         <motion.div
-          className="absolute left-1/2 rounded-lg border border-white/60 bg-white/80 px-2 text-center drop-shadow-sm backdrop-blur-[2px]"
+          className="absolute left-1/2 flex min-w-[6rem] flex-col items-center justify-center rounded-xl border border-gray-200 bg-white p-2 text-center shadow-md"
           variants={{
             hidden: { opacity: 0, scale: 0, translateX: "-50%", top: "50%" },
             visible: { opacity: 1, scale: 1, translateX: "-50%", top: "100%" },
@@ -83,9 +88,10 @@ export function Contrib({ info }: { info: ContribInfo }) {
             damping: 18,
           }}
         >
-          <span className="text-lg">{info.login}</span>
+          <Github className="inline-block h-4 w-4" />
+          <span className="text-gray-600">{info.login}</span>
         </motion.div>
-      </Link>
+      </a>
     </motion.div>
   );
 }
