@@ -143,3 +143,21 @@ export default function SearchBar() {
     </Command>
   );
 }
+
+export function SearchBarPlaceholder() {
+  return (
+    <div className="peer relative w-full max-w-md">
+      <div className="absolute inset-y-0 left-3 mt-3 text-gray-400">
+        <Link2 className="h-4" />
+      </div>
+      <input
+        name="query"
+        id="query"
+        className="block w-full rounded-md border-gray-200 pl-10 text-sm text-gray-900 placeholder-gray-400 shadow-lg focus:border-gray-500 focus:outline-none focus:ring-gray-500"
+        placeholder="Search for a project"
+        disabled
+        aria-invalid="true"
+      />
+    </div>
+  );
+}
