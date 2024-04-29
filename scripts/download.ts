@@ -9,6 +9,9 @@ async function main() {
       name: true,
       description: true,
       slug: true,
+      logo: true,
+      stars: true,
+      clicks: true,
     },
     orderBy: {
       createdAt: "asc",
