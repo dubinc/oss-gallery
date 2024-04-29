@@ -7,6 +7,7 @@ import { getProject } from "@/lib/actions/get-project";
 import { dub } from "@/lib/dub";
 import { getRepo } from "@/lib/github";
 import prisma from "@/lib/prisma";
+import typesense from "@/lib/typesense";
 import { constructMetadata } from "@/lib/utils";
 import { cn, nFormatter } from "@dub/utils";
 import { BadgeCheck, Globe, Star } from "lucide-react";
@@ -79,16 +80,22 @@ export default async function ProjectLayout({
     console.error(e);
   }
 
-  await prisma.project.update({
-    where: {
-      slug,
-    },
-    data: {
-      ...(stars !== project.stars && { stars }),
-      ...(totalClicks &&
-        totalClicks !== project.clicks && { clicks: totalClicks }),
-    },
-  });
+  await Promise.all([
+    prisma.project.update({
+      where: {
+        slug,
+      },
+      data: {
+        ...(stars !== project.stars && { stars }),
+        ...(totalClicks &&
+          totalClicks !== project.clicks && { clicks: totalClicks }),
+      },
+    }),
+    typesense()
+      .collections("projects")
+      .documents(project.id)
+      .update({ stars, clicks: totalClicks }),
+  ]);
 
   return (
     <ProjectProvider props={project}>
