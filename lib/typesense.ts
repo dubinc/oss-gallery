@@ -10,9 +10,7 @@ const typesense = new Typesense.Client({
   apiKey: process.env.NEXT_PUBLIC_TYPESENSE_SEARCH_ONLY_API_KEY,
   nodes: [
     {
-      host: process.env.NEXT_PUBLIC_TYPESENSE_HOST,
-      port: parseInt(process.env.NEXT_PUBLIC_TYPESENSE_PORT),
-      protocol: process.env.NEXT_PUBLIC_TYPESENSE_PROTOCOL,
+      url: process.env.NEXT_PUBLIC_TYPESENSE_URL,
     },
   ],
   connectionTimeoutSeconds: 5,
