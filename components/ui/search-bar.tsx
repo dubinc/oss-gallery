@@ -8,7 +8,6 @@ import { Link2 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Highlighter from "react-highlight-words";
-import { toast } from "sonner";
 import { useDebounce } from "use-debounce";
 
 export default function SearchBar() {
@@ -57,7 +56,7 @@ export default function SearchBar() {
           );
         setItems(results.hits as ProjectHit[]);
       } catch (error) {
-        toast.error(error);
+        console.error(error);
       }
       setLoading(false);
     };
