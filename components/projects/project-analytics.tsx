@@ -21,6 +21,8 @@ async function ProjectAnalyticsRSC({
 }: {
   project: EnrichedProjectProps;
 }) {
+  return <></>;
+
   const { links } = project;
 
   // if project created less than 3 days ago, it's a newly added project

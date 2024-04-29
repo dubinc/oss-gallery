@@ -1,4 +1,4 @@
-import prisma from "@/lib/prisma";
+import { fakeProjects } from "@/lib/fake-data";
 import { Suspense } from "react";
 import ProjectGrid from "./project-grid";
 
@@ -12,14 +12,16 @@ export default function ProjectList() {
 
 async function ProjectListRSC() {
   const featured = ["gallery", "dub", "ui"];
-  const projects = await prisma.project.findMany({
-    where: {
-      verified: true,
-    },
-    orderBy: {
-      stars: "desc",
-    },
-  });
+  // const projects = await prisma.project.findMany({
+  //   where: {
+  //     verified: true,
+  //   },
+  //   orderBy: {
+  //     stars: "desc",
+  //   },
+  // });
+
+  const projects = fakeProjects;
 
   const featuredProjects = featured.map((slug) =>
     projects.find((project) => project.slug === slug),

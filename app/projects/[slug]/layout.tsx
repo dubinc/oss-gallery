@@ -5,8 +5,8 @@ import ProjectProvider from "@/components/projects/project-provider";
 import { buttonLinkVariants } from "@/components/ui/button-link";
 import { getProject } from "@/lib/actions/get-project";
 import { dub } from "@/lib/dub";
+import { fakeProjects } from "@/lib/fake-data";
 import { getRepo } from "@/lib/github";
-import prisma from "@/lib/prisma";
 import { constructMetadata } from "@/lib/utils";
 import { cn, nFormatter } from "@dub/utils";
 import { BadgeCheck, Globe, Star } from "lucide-react";
@@ -34,12 +34,13 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const projects = await prisma.project.findMany({
-    where: {
-      verified: true,
-    },
-    take: 50,
-  });
+  // const projects = await prisma.project.findMany({
+  //   where: {
+  //     verified: true,
+  //   },
+  //   take: 50,
+  // });
+  const projects = fakeProjects;
   return projects.map(({ slug }) => ({
     slug,
   }));
@@ -79,16 +80,16 @@ export default async function ProjectLayout({
     console.error(e);
   }
 
-  await prisma.project.update({
-    where: {
-      slug,
-    },
-    data: {
-      ...(stars !== project.stars && { stars }),
-      ...(totalClicks &&
-        totalClicks !== project.clicks && { clicks: totalClicks }),
-    },
-  });
+  // await prisma.project.update({
+  //   where: {
+  //     slug,
+  //   },
+  //   data: {
+  //     ...(stars !== project.stars && { stars }),
+  //     ...(totalClicks &&
+  //       totalClicks !== project.clicks && { clicks: totalClicks }),
+  //   },
+  // });
 
   return (
     <ProjectProvider props={project}>

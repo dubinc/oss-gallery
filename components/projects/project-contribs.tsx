@@ -34,6 +34,7 @@ export function Contribs({
 
 export function Contrib({ info }: { info: ContribInfo }) {
   const [hover, setHover] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <motion.div
@@ -66,14 +67,27 @@ export function Contrib({ info }: { info: ContribInfo }) {
             damping: 25,
           }}
         >
-          <Image
-            src={info.avatar_url}
-            alt={info.login}
-            width={48}
-            height={48}
-            className="rounded-full"
-            unoptimized
-          />
+          <div className="relative">
+            <Image
+              src={info.avatar_url}
+              alt={info.login}
+              width={48}
+              height={48}
+              className={cn(
+                "rounded-full transition-opacity",
+                loaded ? "opacity-100" : "opacity-0",
+              )}
+              unoptimized
+              onLoadingComplete={() => {
+                setLoaded(true);
+              }}
+            />
+            {!loaded && (
+              <span className="absolute left-0 top-0 flex h-12 w-12 animate-pulse items-center justify-center rounded-full bg-gray-200/50 text-lg font-semibold text-gray-300">
+                {info.login.substring(0, 2).toUpperCase()}
+              </span>
+            )}
+          </div>
         </motion.div>
         <motion.div
           className="absolute left-1/2 flex min-w-[6rem] flex-col items-center justify-center rounded-xl border border-gray-200 bg-white p-2 text-center shadow-md"
