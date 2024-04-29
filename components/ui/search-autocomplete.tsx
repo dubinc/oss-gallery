@@ -25,6 +25,7 @@ export default function SearchAutocomplete({ query }: { query: string }) {
               num_typos: 1,
               limit: 8,
               exclude_fields: ["out_of", "search_time_ms"],
+              infix: "always",
             },
             {
               abortSignal: abortController.signal,
