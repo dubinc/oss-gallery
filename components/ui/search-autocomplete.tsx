@@ -20,8 +20,8 @@ export default function SearchAutocomplete({ query }: { query: string }) {
           .search(
             {
               q,
-              query_by: "name",
-              highlight_full_fields: "name",
+              query_by: ["name", "description"],
+              highlight_full_fields: ["name", "description"],
               num_typos: 1,
               limit: 8,
               exclude_fields: ["out_of", "search_time_ms"],
