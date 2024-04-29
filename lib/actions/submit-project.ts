@@ -69,7 +69,7 @@ export async function submitProject(_prevState: any, data: FormData) {
         type: "WEBSITE",
         projectId: project.id,
       }),
-    typesense.collections("projects").documents().create({
+    typesense().collections("projects").documents().create({
       id: project.id,
       name: project.name,
       description: project.description,

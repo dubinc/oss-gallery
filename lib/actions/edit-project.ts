@@ -76,7 +76,7 @@ export async function editProject(
             description,
           },
         }),
-        typesense
+        typesense()
           .collections("projects")
           .documents(projectId)
           .update({ name, description }),

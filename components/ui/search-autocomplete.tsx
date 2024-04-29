@@ -14,7 +14,7 @@ export default function SearchAutocomplete({ query }: { query: string }) {
     if (!debouncedQuery) return setData([]);
     const fetchAutocomplete = async (q: string) => {
       try {
-        const results = await typesense
+        const results = await typesense({ client: true })
           .collections("projects")
           .documents()
           .search(
