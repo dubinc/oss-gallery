@@ -68,18 +68,19 @@ export async function editProject(
     }
 
     if (props.name !== name || props.description !== description) {
-      const updatedProject = await prisma.project.update({
-        where: { id: projectId },
-        data: {
-          name,
-          description,
-        },
-      });
-
-      await typesense
-        .collections("projects")
-        .documents(updatedProject.id)
-        .update({ name: updatedProject.name });
+      await Promise.all([
+        prisma.project.update({
+          where: { id: projectId },
+          data: {
+            name,
+            description,
+          },
+        }),
+        typesense
+          .collections("projects")
+          .documents(projectId)
+          .update({ name, description }),
+      ]);
     }
 
     return {
