@@ -14,7 +14,10 @@ export default async function EditProjectButton({
     return null;
   }
 
-  if (users.some((user) => user.id === session.user.id)) {
+  if (
+    session.user.id === process.env.ADMIN_ID ||
+    users.some((user) => user.id === session.user.id)
+  ) {
     return <EditProjectButtonClient />;
   }
 }

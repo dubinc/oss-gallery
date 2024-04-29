@@ -11,13 +11,10 @@ export function SubmitProjectButton({ text = "Submit" }: { text?: string }) {
   const { setShowSignInModal, setShowSubmitProjectModal } =
     useContext(AppContext);
 
-  if (status === "loading") {
-    return null;
-  }
-
   return (
     <button
       className={cn(buttonLinkVariants(), "px-3 py-1.5")}
+      disabled={status === "loading"}
       onClick={() => {
         if (session) {
           setShowSubmitProjectModal(true);

@@ -10,6 +10,9 @@ const nextConfig = {
       {
         hostname: "avatars.githubusercontent.com",
       },
+      {
+        hostname: "o41lbhvmufhkidta.public.blob.vercel-storage.com",
+      },
     ],
   },
   async redirects() {
