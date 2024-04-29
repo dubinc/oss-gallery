@@ -2,14 +2,16 @@
 import typesense, { ProjectHit } from "@/lib/typesense";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useDebounce } from "use-debounce";
 
 export default function SearchAutocomplete({ query }: { query: string }) {
+  const [debouncedQuery] = useDebounce(query, 300);
   const [data, setData] = useState<ProjectHit[]>([]);
 
   useEffect(() => {
     const abortController = new AbortController();
 
-    if (!query) return setData([]);
+    if (!debouncedQuery) return setData([]);
     const fetchAutocomplete = async (q: string) => {
       try {
         const results = await typesense
@@ -35,12 +37,12 @@ export default function SearchAutocomplete({ query }: { query: string }) {
         // error handling
       }
     };
-    fetchAutocomplete(query);
+    fetchAutocomplete(debouncedQuery);
 
     return () => {
       abortController.abort();
     };
-  }, [query]);
+  }, [debouncedQuery]);
 
   return (
     <div className="absolute mt-2 w-full overflow-hidden rounded-md border-gray-200 bg-white shadow-lg">
