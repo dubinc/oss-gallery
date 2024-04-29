@@ -4,6 +4,7 @@ import prisma from "@/lib/prisma";
 import { ZodError } from "zod";
 import { editShortLink } from "../dub";
 import { getRepo } from "../github";
+import typesense from "../typesense";
 import { authProject } from "./auth";
 import { getProject } from "./get-project";
 import { FormResponse, editProjectSchema } from "./utils";
@@ -67,13 +68,18 @@ export async function editProject(
     }
 
     if (props.name !== name || props.description !== description) {
-      await prisma.project.update({
+      const updatedProject = await prisma.project.update({
         where: { id: projectId },
         data: {
           name,
           description,
         },
       });
+
+      await typesense
+        .collections("projects")
+        .documents(updatedProject.id)
+        .update({ name: updatedProject.name });
     }
 
     return {

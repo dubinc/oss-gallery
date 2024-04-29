@@ -6,6 +6,7 @@ import { getRepo } from "@/lib/github";
 import prisma from "@/lib/prisma";
 import { getUrlFromString, nanoid } from "@dub/utils";
 import slugify from "@sindresorhus/slugify";
+import typesense from "../typesense";
 import { authUser } from "./auth";
 
 export async function submitProject(_prevState: any, data: FormData) {
@@ -69,6 +70,12 @@ export async function submitProject(_prevState: any, data: FormData) {
         projectId: project.id,
       }),
   ]);
+
+  await typesense.collections("projects").documents().create({
+    id: project.id,
+    name: project.name,
+    slug: project.slug,
+  });
 
   return { redirect: `/projects/${project.slug}` };
 }
