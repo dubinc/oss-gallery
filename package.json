@@ -8,7 +8,8 @@
     "format:write": "prettier --write \"**/*.{css,js,json,jsx,ts,tsx}\"",
     "format": "prettier \"**/*.{css,js,json,jsx,ts,tsx}\"",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "script": "tsx ./scripts/run.ts"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.0.0",
@@ -17,6 +18,7 @@
     "@dub/utils": "^0.0.48",
     "@headlessui/tailwindcss": "^0.2.0",
     "@hookform/resolvers": "^3.3.4",
+    "@octokit/rest": "^20.1.0",
     "@prisma/client": "^4.16.2",
     "@sindresorhus/slugify": "^2.2.1",
     "@tremor/react": "^3.16.1",
@@ -44,11 +46,13 @@
     "@types/react": "18.2.24",
     "@types/react-dom": "18.2.25",
     "autoprefixer": "^10.4.16",
+    "dotenv-flow": "^4.1.0",
     "postcss": "^8.4.31",
     "prettier": "^3.2.5",
     "prettier-plugin-organize-imports": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.14",
     "prisma": "^4.16.2",
-    "tailwindcss": "^3.4.3"
+    "tailwindcss": "^3.4.3",
+    "tsx": "^4.7.3"
   }
 }
