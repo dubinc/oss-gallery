@@ -1,6 +1,8 @@
 import ProjectAnalytics from "@/components/projects/project-analytics";
 import { PROJECT_TABS } from "@/components/projects/project-constants";
+import { Contribs } from "@/components/projects/project-contribs";
 import ProjectTeam from "@/components/projects/project-team";
+import { getContribs } from "@/lib/actions/get-contribs";
 import { getProject } from "@/lib/actions/get-project";
 import { notFound } from "next/navigation";
 
@@ -37,15 +39,13 @@ export default async function Project({
     return <ProjectTeam project={project} />;
   }
 
+  const split = project.githubLink.url.split("/");
+  const repo = split.pop();
+  const owner = split.pop();
+
+  const contribs = await getContribs(owner, repo);
+
   if (tab[0] === "contributors") {
-    return (
-      <a href={project.githubLink.shortLink} target="_blank">
-        <img
-          src={`https://contrib.rocks/image?repo=${
-            project.githubLink.url.split("https://github.com/")[1]
-          }`}
-        />
-      </a>
-    );
+    return <Contribs contribs={contribs} />;
   }
 }

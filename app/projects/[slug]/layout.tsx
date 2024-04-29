@@ -109,6 +109,7 @@ export default async function ProjectLayout({
           width={100}
           height={100}
           className="h-16 w-16 rounded-full bg-white p-2 sm:h-24 sm:w-24"
+          unoptimized
         />
         <div className="flex items-center space-x-2 py-2">
           <Suspense>

@@ -28,6 +28,7 @@ const SubmitProjectModal = ({
           className="h-10 w-10 rounded-full"
           width={20}
           height={20}
+          unoptimized
         />
         <h3 className="font-display text-xl font-bold">Submit a new project</h3>
         <p className="text-sm text-gray-500">

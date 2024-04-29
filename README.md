@@ -34,6 +34,6 @@ It uses the [Dub.co API](https://dub.co/docs/api-reference/introduction) to crea
 ## Tech Stack
 
 - Next.js Server Actions + Form Actions (zero API routes)
-- Dub.co's TypeScript SDK (https://github.com/dubinc/dub-node)
+- Dub [TypeScript SDK](https://github.com/dubinc/dub-node)
 - Tremor for charts
 - Vercel Postgres + deployment

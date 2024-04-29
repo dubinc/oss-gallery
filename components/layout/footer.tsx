@@ -13,7 +13,7 @@ export default function Footer() {
         project built with the{" "}
         <a
           className="font-semibold text-gray-600 underline-offset-4 transition-colors hover:underline"
-          href="https://dub.co/api"
+          href="https://dub.co/blog/product-discovery-platform"
           target="_blank"
         >
           Dub API

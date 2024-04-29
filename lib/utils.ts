@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export function constructMetadata({
   title = "OSS Gallery",
@@ -35,3 +35,10 @@ export function constructMetadata({
     metadataBase: new URL("https://oss.gallery"),
   };
 }
+
+export const getUrlWithRef = (url: string) => {
+  const urlWithRef = new URL(url);
+  urlWithRef.searchParams.set("ref", "ossgallery");
+
+  return urlWithRef.toString();
+};

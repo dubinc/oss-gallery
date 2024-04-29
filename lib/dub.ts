@@ -2,6 +2,7 @@ import prisma from "@/lib/prisma";
 import { nanoid } from "@dub/utils";
 import { Link } from "@prisma/client";
 import { Dub } from "dub";
+import { getUrlWithRef } from "./utils";
 
 export const dub = new Dub({
   workspaceId: "ws_clv9jxuxp0006gpq847kwrcwj",
@@ -17,8 +18,9 @@ export async function shortenAndCreateLink({
   projectId: string;
 }) {
   const linkId = nanoid(24);
+
   const { shortLink } = await dub.links.create({
-    url,
+    url: getUrlWithRef(url),
     externalId: linkId,
   });
 
@@ -42,7 +44,7 @@ export async function editShortLink({
 }) {
   return await Promise.all([
     dub.links.update(`ext_${link.id}`, {
-      url: newUrl,
+      url: getUrlWithRef(newUrl),
     }),
     prisma.link.update({
       where: {

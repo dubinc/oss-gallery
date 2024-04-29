@@ -70,6 +70,7 @@ export default async function Profile({
           width={100}
           height={100}
           className="h-16 w-16 rounded-full bg-white p-2 sm:h-24 sm:w-24"
+          unoptimized
         />
       </div>
       <div className="max-w-lg p-4">
