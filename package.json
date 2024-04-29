@@ -28,7 +28,7 @@
     "dub": "^0.24.4",
     "framer-motion": "^11.1.7",
     "lucide-react": "0.372.0",
-    "next": "14.3.0-canary.11",
+    "next": "14.3.0-canary.30",
     "next-auth": "5.0.0-beta.16",
     "react": "18.2.0",
     "react-dom": "18.2.0",

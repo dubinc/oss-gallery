@@ -39,7 +39,7 @@ export async function generateStaticParams() {
     where: {
       verified: true,
     },
-    take: 50,
+    take: 100,
   });
   return projects.map(({ slug }) => ({
     slug,
@@ -80,7 +80,7 @@ export default async function ProjectLayout({
     console.error(e);
   }
 
-  await Promise.all([
+  await Promise.allSettled([
     prisma.project.update({
       where: {
         slug,
