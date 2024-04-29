@@ -3,7 +3,7 @@ import Typesense from "typesense";
 import { SearchResponseHit } from "typesense/lib/Typesense/Documents";
 
 export type ProjectHit = SearchResponseHit<
-  Pick<Project, "id" | "name" | "slug">
+  Pick<Project, "id" | "name" | "description" | "slug">
 >;
 
 const typesense = new Typesense.Client({
