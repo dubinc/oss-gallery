@@ -34,7 +34,7 @@ export default function ProjectLayoutTabs() {
             : tab[0] === "contributors"
               ? `Top contributors of the project. View the full list on [GitHub](${props.githubLink.shortLink}).`
               : ""
-          : "Real-time click analytics for each of the links above – powered by the [Dub API](https://dub.co/api)."}
+          : "Real-time click analytics for each of the links above – powered by the [Dub API](https://dub.co/api). Learn how you can integrate [real-time analytics](https://dub.co/blog/product-discovery-platform) in your products using Dub's API."}
       </ProjectTabNote>
     </div>
   );
