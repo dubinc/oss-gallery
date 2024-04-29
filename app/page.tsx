@@ -6,7 +6,7 @@ import { Suspense } from "react";
 export default function Home() {
   return (
     <>
-      <div className="mx-auto w-full max-w-xl px-5 py-10 xl:px-0">
+      <div className="relative z-10 mx-auto w-full max-w-xl px-5 py-10 xl:px-0">
         <a
           href="https://go.oss.gallery/launch"
           target="_blank"

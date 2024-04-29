@@ -43,7 +43,7 @@ export default function SearchAutocomplete({ query }: { query: string }) {
   }, [query]);
 
   return (
-    <div className="absolute w-full overflow-hidden rounded-md border-gray-200 bg-white shadow-lg">
+    <div className="absolute mt-2 w-full overflow-hidden rounded-md border-gray-200 bg-white shadow-lg">
       <ul className="text-sm">
         {data.map(({ document }) => (
           <li className="w-full" key={document.id}>
