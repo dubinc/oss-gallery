@@ -114,24 +114,24 @@ export default function SearchBar() {
                 />
                 <div className="flex flex-col space-y-0.5">
                   <Highlighter
-                    highlightClassName="underline bg-transparent text-purple-500"
+                    highlightClassName="underline text-gray-800 bg-transparent"
                     searchWords={
                       item.highlights.find((h) => h.field === "name")
                         ?.matched_tokens || []
                     }
                     autoEscape={true}
                     textToHighlight={item.document.name}
-                    className="text-sm font-medium text-gray-600 group-aria-selected:text-purple-600 sm:group-hover:text-purple-600"
+                    className="text-sm font-medium text-gray-600 underline-offset-2"
                   />
                   <Highlighter
-                    highlightClassName="underline bg-transparent text-purple-500"
+                    highlightClassName="underline text-gray-800 bg-transparent"
                     searchWords={
                       item.highlights.find((h) => h.field === "description")
                         ?.matched_tokens || []
                     }
                     autoEscape={true}
                     textToHighlight={item.document.description}
-                    className="line-clamp-1 text-xs text-gray-400"
+                    className="line-clamp-1 text-xs text-gray-400 underline-offset-2"
                   />
                 </div>
               </div>
