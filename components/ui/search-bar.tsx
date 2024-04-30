@@ -70,7 +70,11 @@ export default function SearchBar() {
   const router = useRouter();
 
   return (
-    <Command className="peer relative w-full max-w-md" loop>
+    <Command
+      className="peer relative w-full max-w-md"
+      loop
+      shouldFilter={false}
+    >
       <div className="absolute inset-y-0 left-3 mt-3 text-gray-400">
         {loading ? (
           <LoadingSpinner className="h-4" />
@@ -94,50 +98,48 @@ export default function SearchBar() {
           },
         )}
       >
-        {items.map((item) => {
-          return (
-            <Command.Item
-              key={item.document.id}
-              value={item.document.name}
-              onSelect={() => {
-                router.push(`/projects/${item.document.slug}`);
-              }}
-              className="group flex cursor-pointer items-center justify-between rounded-md px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 hover:text-gray-900 active:bg-gray-200 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 aria-disabled:hover:bg-white aria-selected:bg-gray-100 aria-selected:text-gray-900"
-            >
-              <div className="flex items-center space-x-2">
-                <BlurImage
-                  src={item.document.logo}
-                  alt={item.document.name}
-                  className="h-6 w-6 rounded-full"
-                  width={16}
-                  height={16}
+        {items.map((item) => (
+          <Command.Item
+            key={item.document.id}
+            value={item.document.name}
+            onSelect={() => {
+              router.push(`/projects/${item.document.slug}`);
+            }}
+            className="group flex cursor-pointer items-center justify-between rounded-md px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 hover:text-gray-900 active:bg-gray-200 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 aria-disabled:hover:bg-white aria-selected:bg-gray-100 aria-selected:text-gray-900"
+          >
+            <div className="flex items-center space-x-2">
+              <BlurImage
+                src={item.document.logo}
+                alt={item.document.name}
+                className="h-6 w-6 rounded-full"
+                width={16}
+                height={16}
+              />
+              <div className="flex flex-col space-y-0.5">
+                <Highlighter
+                  highlightClassName="underline text-gray-800 bg-transparent"
+                  searchWords={
+                    item.highlights.find((h) => h.field === "name")
+                      ?.matched_tokens || []
+                  }
+                  autoEscape={true}
+                  textToHighlight={item.document.name}
+                  className="text-sm font-medium text-gray-600 underline-offset-2"
                 />
-                <div className="flex flex-col space-y-0.5">
-                  <Highlighter
-                    highlightClassName="underline bg-transparent text-purple-500"
-                    searchWords={
-                      item.highlights.find((h) => h.field === "name")
-                        ?.matched_tokens || []
-                    }
-                    autoEscape={true}
-                    textToHighlight={item.document.name}
-                    className="text-sm font-medium text-gray-600 group-aria-selected:text-purple-600 sm:group-hover:text-purple-600"
-                  />
-                  <Highlighter
-                    highlightClassName="underline bg-transparent text-purple-500"
-                    searchWords={
-                      item.highlights.find((h) => h.field === "description")
-                        ?.matched_tokens || []
-                    }
-                    autoEscape={true}
-                    textToHighlight={item.document.description}
-                    className="line-clamp-1 text-xs text-gray-400"
-                  />
-                </div>
+                <Highlighter
+                  highlightClassName="underline text-gray-800 bg-transparent"
+                  searchWords={
+                    item.highlights.find((h) => h.field === "description")
+                      ?.matched_tokens || []
+                  }
+                  autoEscape={true}
+                  textToHighlight={item.document.description}
+                  className="line-clamp-1 text-xs text-gray-400 underline-offset-2"
+                />
               </div>
-            </Command.Item>
-          );
-        })}
+            </div>
+          </Command.Item>
+        ))}
       </Command.List>
     </Command>
   );

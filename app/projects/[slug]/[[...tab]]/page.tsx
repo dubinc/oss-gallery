@@ -28,10 +28,6 @@ export default async function Project({
     notFound();
   }
 
-  if (!tab) {
-    return <ProjectAnalytics project={project} />;
-  }
-
   if (tab[0] === "team") {
     return <ProjectTeam project={project} />;
   }
@@ -47,4 +43,6 @@ export default async function Project({
   if (tab[0] === "readme") {
     return <Readme owner={owner} repo={repo} />;
   }
+  
+  return <ProjectAnalytics project={project} />;
 }
