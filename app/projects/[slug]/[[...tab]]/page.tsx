@@ -27,10 +27,6 @@ export default async function Project({
     notFound();
   }
 
-  if (!tab) {
-    return <ProjectAnalytics project={project} />;
-  }
-
   if (tab[0] === "team") {
     return <ProjectTeam project={project} />;
   }
@@ -44,4 +40,6 @@ export default async function Project({
   if (tab[0] === "contributors") {
     return <Contribs contribs={contribs} />;
   }
+
+  return <ProjectAnalytics project={project} />;
 }
