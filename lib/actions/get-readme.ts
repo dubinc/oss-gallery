@@ -1,7 +1,7 @@
 "use server";
-"use server";
 
 import { octokit } from "../github";
+
 export interface ReadmeInfo {
   type: "file";
   encoding: string;
@@ -28,7 +28,9 @@ export async function getReadme(owner: string, repo: string) {
     owner,
     repo,
     mediaType: {
-      format: "html", // Requests the README in raw markdown format
+      format: "raw", // Requests the README in raw markdown format,
+      // format: "html", // Requests the README in HTML format
+      // format: "json", // Requests the README in JSON format
     },
   });
 

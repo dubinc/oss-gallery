@@ -8,8 +8,8 @@ export const PROJECT_TABS = [
     tab: "team",
   },
   {
-    title: "About",
-    tab: "about",
+    title: "Readme",
+    tab: "readme",
   },
 ];
 

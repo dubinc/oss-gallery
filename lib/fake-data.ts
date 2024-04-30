@@ -85,4 +85,25 @@ export const fakeProjects: Project[] = [
     ],
     users: [],
   },
+  {
+    id: "5",
+    name: "markdown-here",
+    slug: "markdown-here",
+    description: "A markdown project",
+    stars: 500,
+    verified: true,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    links: [
+      {
+        type: "GITHUB",
+        url: "https://github.com/adam-p/markdown-here",
+      },
+      {
+        type: "WEBSITE",
+        url: "",
+      },
+    ],
+    users: [],
+  },
 ];

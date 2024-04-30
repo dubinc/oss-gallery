@@ -48,7 +48,7 @@ export default async function Project({
     return <Contribs contribs={contribs} />;
   }
 
-  if (tab[0] === "about") {
+  if (tab[0] === "readme") {
     return <Readme owner={owner} repo={repo} />;
   }
 }
