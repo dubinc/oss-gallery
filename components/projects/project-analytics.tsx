@@ -35,10 +35,12 @@ async function ProjectAnalyticsRSC({
         (a, _) => (a.type === "GITHUB" ? -1 : 1),
       )
       .map(async (link) => {
-        return await dub.analytics.timeseries({
-          externalId: `ext_${link.id}`,
-          interval: newlyAddedProject ? "24h" : "30d",
-        });
+        return await dub.analytics
+          .timeseries({
+            externalId: `ext_${link.id}`,
+            interval: newlyAddedProject ? "24h" : "30d",
+          })
+          .catch(() => []);
       }),
   );
 

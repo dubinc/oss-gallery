@@ -1,5 +1,4 @@
 import ProjectAnalytics from "@/components/projects/project-analytics";
-import { PROJECT_TABS } from "@/components/projects/project-constants";
 import { Contribs } from "@/components/projects/project-contribs";
 import ProjectTeam from "@/components/projects/project-team";
 import { getContribs } from "@/lib/actions/get-contribs";
@@ -11,9 +10,6 @@ export async function generateStaticParams() {
     {
       tab: [], // for the root page
     },
-    ...PROJECT_TABS.map((tab) => ({
-      tab: [tab.tab],
-    })),
   ];
 }
 
@@ -31,10 +27,6 @@ export default async function Project({
     notFound();
   }
 
-  if (!tab) {
-    return <ProjectAnalytics project={project} />;
-  }
-
   if (tab[0] === "team") {
     return <ProjectTeam project={project} />;
   }
@@ -48,4 +40,6 @@ export default async function Project({
   if (tab[0] === "contributors") {
     return <Contribs contribs={contribs} />;
   }
+
+  return <ProjectAnalytics project={project} />;
 }

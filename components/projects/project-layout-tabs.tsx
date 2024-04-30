@@ -16,7 +16,11 @@ export default function ProjectLayoutTabs() {
   return (
     <div className="my-4 flex flex-col space-y-6 p-4">
       <div className="flex max-w-fit items-center rounded-full bg-gray-100">
-        <TabLink title="Analytics" href={`/projects/${slug}`} active={!tab} />
+        <TabLink
+          title="Analytics"
+          href={`/projects/${slug}`}
+          active={tab[0] === slug}
+        />
         {PROJECT_TABS.map((t) => (
           <TabLink
             key={t.tab}
@@ -28,13 +32,11 @@ export default function ProjectLayoutTabs() {
       </div>
 
       <ProjectTabNote>
-        {tab
-          ? tab[0] === "team"
-            ? `Active team members of the project. View the full list on [GitHub](${props.githubLink.shortLink}).`
-            : tab[0] === "contributors"
-              ? `Top contributors of the project. View the full list on [GitHub](${props.githubLink.shortLink}).`
-              : ""
-          : "Real-time click analytics for each of the links above – powered by the [Dub API](https://dub.co/api). Learn how you can integrate [real-time analytics](https://dub.co/blog/product-discovery-platform) in your products using Dub's API."}
+        {tab[0] === "team"
+          ? `Active team members of the project. View the full list on [GitHub](${props.githubLink.shortLink}).`
+          : tab[0] === "contributors"
+            ? `Top contributors of the project. View the full list on [GitHub](${props.githubLink.shortLink}).`
+            : "Real-time click analytics for each of the links above – powered by the [Dub API](https://dub.co/api). Learn how you can integrate [real-time analytics](https://dub.co/blog/product-discovery-platform) in your products using Dub's API."}
       </ProjectTabNote>
     </div>
   );
