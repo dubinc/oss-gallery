@@ -7,6 +7,10 @@ export const PROJECT_TABS = [
     title: "Team",
     tab: "team",
   },
+  {
+    title: "About",
+    tab: "about",
+  },
 ];
 
 export const PROJECT_GRADIENTS = [
