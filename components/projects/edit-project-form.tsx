@@ -186,7 +186,7 @@ export default function EditProjectForm({
           <input
             {...register("website")}
             required
-            defaultValue={props.websiteLink.url}
+            defaultValue={props.websiteLink?.url}
             placeholder="https://dub.co"
             className={`${
               errors.website
