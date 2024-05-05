@@ -1,5 +1,6 @@
 import ProjectAnalytics from "@/components/projects/project-analytics";
 import { Contribs } from "@/components/projects/project-contribs";
+import Readme from "@/components/projects/project-readme";
 import ProjectTeam from "@/components/projects/project-team";
 import { getContribs } from "@/lib/actions/get-contribs";
 import { getProject } from "@/lib/actions/get-project";
@@ -34,12 +35,14 @@ export default async function Project({
   const split = project.githubLink.url.split("/");
   const repo = split.pop();
   const owner = split.pop();
-
-  const contribs = await getContribs(owner, repo);
-
   if (tab[0] === "contributors") {
+    const contribs = await getContribs(owner, repo);
     return <Contribs contribs={contribs} />;
   }
 
+  if (tab[0] === "readme") {
+    return <Readme owner={owner} repo={repo} />;
+  }
+  
   return <ProjectAnalytics project={project} />;
 }
