@@ -1,5 +1,6 @@
 import Footer from "@/components/layout/footer";
 import Nav from "@/components/layout/nav";
+import ProductHuntPopup from "@/components/layout/product-hunt-popup";
 import { constructMetadata } from "@/lib/utils";
 import { cn } from "@dub/utils";
 import { inter, sfPro } from "./fonts";
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body>
         <Providers>
           <Nav />
+          <ProductHuntPopup />
           <div className="w-full bg-gradient-to-br from-indigo-50 via-white to-cyan-100 py-16">
             <div className="mx-auto min-h-screen w-full max-w-screen-md">
               {children}
