@@ -4,7 +4,6 @@ import ProjectLayoutTabs from "@/components/projects/project-layout-tabs";
 import ProjectProvider from "@/components/projects/project-provider";
 import { buttonLinkVariants } from "@/components/ui/button-link";
 import { getProject } from "@/lib/actions/get-project";
-import { dub } from "@/lib/dub";
 import { getRepo } from "@/lib/github";
 import prisma from "@/lib/prisma";
 import typesense from "@/lib/typesense";
@@ -15,7 +14,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
-export const revalidate = 3600;
+export const revalidate = 43200;
 
 export async function generateMetadata({
   params: { slug },
@@ -63,39 +62,22 @@ export default async function ProjectLayout({
 
   const { stars } = await getRepo(project.githubLink.url);
 
-  let totalClicks: number | null = null;
-
-  try {
-    const clicks = await Promise.all([
-      dub.analytics.clicks({
-        externalId: `ext_${project.githubLink.id}`,
+  if (stars !== project.stars) {
+    await Promise.allSettled([
+      prisma.project.update({
+        where: {
+          slug,
+        },
+        data: {
+          ...(stars !== project.stars && { stars }),
+        },
       }),
-      project.websiteLink &&
-        dub.analytics.clicks({
-          externalId: `ext_${project.websiteLink.id}`,
-        }),
+      typesense()
+        .collections("projects")
+        .documents(project.id)
+        .update({ stars }),
     ]);
-    totalClicks = clicks.reduce((acc, curr) => acc + curr, 0);
-  } catch (e) {
-    console.error(e);
   }
-
-  await Promise.allSettled([
-    prisma.project.update({
-      where: {
-        slug,
-      },
-      data: {
-        ...(stars !== project.stars && { stars }),
-        ...(totalClicks &&
-          totalClicks !== project.clicks && { clicks: totalClicks }),
-      },
-    }),
-    typesense()
-      .collections("projects")
-      .documents(project.id)
-      .update({ stars, clicks: totalClicks }),
-  ]);
 
   return (
     <ProjectProvider props={project}>
