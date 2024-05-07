@@ -28,6 +28,8 @@ async function ProjectAnalyticsRSC({
     new Date(project.createdAt).getTime() >
     Date.now() - 3 * 24 * 60 * 60 * 1000;
 
+  console.log("Refreshing analytics data");
+
   const analytics = await Promise.all(
     links
       .sort(
@@ -43,8 +45,6 @@ async function ProjectAnalyticsRSC({
           .catch(() => []);
       }),
   );
-
-  console.log("Refreshed analytics data");
 
   const chartData = analytics[0].map(
     (data: { start: string; clicks: number }, i) => {
