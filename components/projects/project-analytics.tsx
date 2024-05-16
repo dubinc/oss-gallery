@@ -37,7 +37,7 @@ async function ProjectAnalyticsRSC({
         (a, _) => (a.type === "GITHUB" ? -1 : 1),
       )
       .map(async (link) => {
-        return await dub.analytics
+        return await dub.analytics.clicks
           .timeseries({
             externalId: `ext_${link.id}`,
             interval: newlyAddedProject ? "24h" : "30d",
