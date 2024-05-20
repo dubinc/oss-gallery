@@ -5,6 +5,9 @@
   "scripts": {
     "dev": "prisma generate && next dev",
     "build": "prisma generate && prisma db push && next build",
+    "db:generate": "prisma generate",
+    "db:seed": "npx tsx --env-file=.env ./prisma/seed.ts",
+    "db:push": "prisma db push",
     "format:write": "prettier --write \"**/*.{css,js,json,jsx,ts,tsx}\"",
     "format": "prettier \"**/*.{css,js,json,jsx,ts,tsx}\"",
     "start": "next start",

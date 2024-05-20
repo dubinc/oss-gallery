@@ -1,6 +1,6 @@
-import { PrismaClient } from '@prisma/client';
+import { LinkType, PrismaClient } from '@prisma/client';
 
-import * as data from './data/projects';
+import * as data from './data';
 
 const prisma = new PrismaClient();
 
@@ -25,37 +25,67 @@ async function main() {
 
   console.log("Seeding Projects");
 
-  await prisma.project.deleteMany({
-    where: {}
-  });
-
   const seedProjects = [...data.projects];
 
-  while(seedProjects.length) {
-    const projects = seedProjects.splice(0,8);
+  while (seedProjects.length) {
+    console.log(`Remaning ${seedProjects.length} projects`)
+    const projects = seedProjects.splice(0, 8);
 
     const results = await Promise.allSettled(
       projects.map(async (project) => {
-        const createdProject =  await prisma.project.create({
+        const existingProject = await prisma.project.findUnique({
+          where: {
+            slug: project.slug
+          }
+        });
+
+        if (existingProject) {
+          return existingProject;
+        }
+
+        const links: { type: LinkType, shortLink: string, url: string }[] = []
+
+        if (!!project.githubUrl) {
+          links.push({
+            type: "GITHUB",
+            shortLink: project.githubUrl,
+            url: project.githubUrl
+          })
+        }
+
+        if (!!project.websiteUrl) {
+          links.push({
+            type: "WEBSITE",
+            shortLink: project.websiteUrl,
+            url: project.websiteUrl
+          })
+        }
+
+        const createdProject = await prisma.project.create({
           data: {
             ...project,
             users: {
               create: {
-                role: "Seed Mantainer",
+                role: "Seed Submitter",
                 userId: dubInc.id
+              }
+            },
+            links: {
+              createMany: {
+                data: links
               }
             }
           }
         });
 
-        return createdProject
+        return createdProject;
       })
-    )
-  
+    );
+
     const errors = results.filter(result => result.status === "rejected");
-  
-    if(errors.length){
-      console.log(errors)
+
+    if (errors.length) {
+      console.log(errors);
     }
   }
 
