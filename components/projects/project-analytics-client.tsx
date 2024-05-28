@@ -32,7 +32,6 @@ export default function ProjectAnalyticsClient({
 
   return (
     <div className="w-full">
-      {JSON.stringify(data, null, 2)}
       <div className="mb-2 flex justify-end">
         <button
           onClick={refreshData}
