@@ -5,7 +5,7 @@ import { nFormatter } from "@dub/utils";
 import { AreaChart } from "@tremor/react";
 import { RefreshCcw } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useTransition } from "react";
+import { use, useTransition } from "react";
 import { buttonLinkVariants } from "../ui/button-link";
 
 export default function ProjectAnalyticsClient({
@@ -13,10 +13,14 @@ export default function ProjectAnalyticsClient({
   categories,
   startEndOnly,
 }: {
-  chartData: any[];
+  chartData: Promise<any[]>;
   categories: string[];
   startEndOnly?: boolean;
 }) {
+  const data = use(chartData);
+
+  console.log({ type: typeof data, data });
+
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
@@ -28,6 +32,7 @@ export default function ProjectAnalyticsClient({
 
   return (
     <div className="w-full">
+      {JSON.stringify(data, null, 2)}
       <div className="mb-2 flex justify-end">
         <button
           onClick={refreshData}
@@ -43,7 +48,7 @@ export default function ProjectAnalyticsClient({
       </div>
       <AreaChart
         className="-ml-4 h-80"
-        data={chartData}
+        data={data}
         index="start"
         categories={categories}
         colors={["rose", "blue"]}

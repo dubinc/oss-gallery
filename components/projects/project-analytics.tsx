@@ -9,18 +9,6 @@ export default function ProjectAnalytics({
 }: {
   project: EnrichedProjectProps;
 }) {
-  return (
-    <Suspense fallback={<LoadingSpinner />}>
-      <ProjectAnalyticsRSC project={project} />
-    </Suspense>
-  );
-}
-
-async function ProjectAnalyticsRSC({
-  project,
-}: {
-  project: EnrichedProjectProps;
-}) {
   const { links } = project;
 
   // if project created less than 3 days ago, it's a newly added project
@@ -29,6 +17,24 @@ async function ProjectAnalyticsRSC({
     Date.now() - 3 * 24 * 60 * 60 * 1000;
 
   console.log("Refreshing analytics data");
+
+  return (
+    <Suspense fallback={<LoadingSpinner />}>
+      <ProjectAnalyticsClient
+        chartData={getChartData(project)}
+        categories={[links[0].type, links[1] ? links[1].type : undefined]}
+        startEndOnly={newlyAddedProject}
+      />
+    </Suspense>
+  );
+}
+
+async function getChartData(project: EnrichedProjectProps) {
+  const { links } = project;
+
+  const newlyAddedProject =
+    new Date(project.createdAt).getTime() >
+    Date.now() - 3 * 24 * 60 * 60 * 1000;
 
   const analytics = await Promise.all(
     links
@@ -46,36 +52,26 @@ async function ProjectAnalyticsRSC({
       }),
   );
 
-  const chartData = analytics[0].map(
-    (data: { start: string; clicks: number }, i) => {
-      return {
-        start: new Date(data.start).toLocaleDateString(
-          "en-US",
-          newlyAddedProject
-            ? {
-                month: "short",
-                day: "numeric",
-                hour: "numeric",
-                minute: "numeric",
-              }
-            : {
-                month: "short",
-                day: "numeric",
-              },
-        ),
-        [links[0].type]: analytics[0][i]?.clicks,
-        ...(links[1] && {
-          [links[1].type]: analytics[1][i]?.clicks,
-        }),
-      };
-    },
-  );
-
-  return (
-    <ProjectAnalyticsClient
-      chartData={chartData}
-      categories={[links[0].type, links[1] ? links[1].type : undefined]}
-      startEndOnly={newlyAddedProject}
-    />
-  );
+  return analytics[0].map((data: { start: string; clicks: number }, i) => {
+    return {
+      start: new Date(data.start).toLocaleDateString(
+        "en-US",
+        newlyAddedProject
+          ? {
+              month: "short",
+              day: "numeric",
+              hour: "numeric",
+              minute: "numeric",
+            }
+          : {
+              month: "short",
+              day: "numeric",
+            },
+      ),
+      [links[0].type]: analytics[0][i]?.clicks,
+      ...(links[1] && {
+        [links[1].type]: analytics[1][i]?.clicks,
+      }),
+    };
+  });
 }

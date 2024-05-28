@@ -1,6 +1,7 @@
 import { EnrichedProjectProps } from "@/lib/types";
 import { cn } from "@dub/utils";
 import Link from "next/link";
+import { Suspense } from "react";
 import EditTeamButton from "./edit-team-button";
 
 export default function ProjectTeam({
@@ -13,7 +14,9 @@ export default function ProjectTeam({
   return (
     <>
       <div className="absolute right-4 top-4">
-        <EditTeamButton project={project} />
+        <Suspense>
+          <EditTeamButton project={project} />
+        </Suspense>
       </div>
       <div
         className={cn(
