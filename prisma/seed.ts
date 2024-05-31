@@ -13,8 +13,8 @@ async function main() {
     where: { email: 'dubinc@dub.co' },
     update: {},
     create: {
-      email: 'dubinc@dub.co',
-      name: 'Dub Inc',
+      email: 'support@dub.co',
+      name: 'Dub.co',
       username: "dubinc",
       emailVerified: new Date(),
       image: "https://avatars.githubusercontent.com/u/153106492?s=200&v=4",
