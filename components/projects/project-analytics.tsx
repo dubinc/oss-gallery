@@ -1,6 +1,7 @@
 import { dub } from "@/lib/dub";
 import { EnrichedProjectProps } from "@/lib/types";
 import { LoadingSpinner } from "@dub/ui";
+import { ClicksTimeseries } from "dub/models/components";
 import { Suspense } from "react";
 import ProjectAnalyticsClient from "./project-analytics-client";
 
@@ -37,39 +38,38 @@ async function ProjectAnalyticsRSC({
         (a, _) => (a.type === "GITHUB" ? -1 : 1),
       )
       .map(async (link) => {
-        return await dub.analytics.clicks
-          .timeseries({
+        return (await dub.analytics
+          .retrieve({
+            groupBy: "timeseries",
             externalId: `ext_${link.id}`,
             interval: newlyAddedProject ? "24h" : "30d",
           })
-          .catch(() => []);
+          .catch(() => [])) as ClicksTimeseries[];
       }),
   );
 
-  const chartData = analytics[0].map(
-    (data: { start: string; clicks: number }, i) => {
-      return {
-        start: new Date(data.start).toLocaleDateString(
-          "en-US",
-          newlyAddedProject
-            ? {
-                month: "short",
-                day: "numeric",
-                hour: "numeric",
-                minute: "numeric",
-              }
-            : {
-                month: "short",
-                day: "numeric",
-              },
-        ),
-        [links[0].type]: analytics[0][i]?.clicks,
-        ...(links[1] && {
-          [links[1].type]: analytics[1][i]?.clicks,
-        }),
-      };
-    },
-  );
+  const chartData = analytics[0].map((data, i) => {
+    return {
+      start: new Date(data.start).toLocaleDateString(
+        "en-US",
+        newlyAddedProject
+          ? {
+              month: "short",
+              day: "numeric",
+              hour: "numeric",
+              minute: "numeric",
+            }
+          : {
+              month: "short",
+              day: "numeric",
+            },
+      ),
+      [links[0].type]: analytics[0][i]?.clicks,
+      ...(links[1] && {
+        [links[1].type]: analytics[1][i]?.clicks,
+      }),
+    };
+  });
 
   return (
     <ProjectAnalyticsClient
