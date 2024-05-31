@@ -40,6 +40,7 @@ async function ProjectAnalyticsRSC({
       .map(async (link) => {
         return (await dub.analytics
           .retrieve({
+            event: "clicks",
             groupBy: "timeseries",
             externalId: `ext_${link.id}`,
             interval: newlyAddedProject ? "24h" : "30d",
