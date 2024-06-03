@@ -1,9 +1,16 @@
 import ProjectList from "@/components/projects/project-list";
 import SearchBar, { SearchBarPlaceholder } from "@/components/ui/search-bar";
+import { ProjectSorts } from "@/lib/project";
 import { Twitter } from "@dub/ui";
 import { Suspense } from "react";
 
-export default function Home() {
+export default function Home({
+  searchParams,
+}: {
+  searchParams?: {
+    sort?: ProjectSorts;
+  };
+}) {
   return (
     <>
       <div className="relative z-10 mx-auto w-full max-w-xl px-5 py-10 xl:px-0">
@@ -45,7 +52,7 @@ export default function Home() {
         className="animate-fade-up opacity-0"
         style={{ animationDelay: "0.35s", animationFillMode: "forwards" }}
       >
-        <ProjectList />
+        <ProjectList sort={searchParams.sort} />
       </div>
     </>
   );
