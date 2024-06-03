@@ -30,7 +30,6 @@ const EditTeamModal = ({
           className="h-10 w-10 rounded-full"
           width={20}
           height={20}
-          unoptimized
         />
         <h3 className="font-display text-xl font-bold">Edit Team</h3>
       </div>

@@ -72,7 +72,6 @@ export function Contrib({ info }: { info: ContribInfo }) {
             width={48}
             height={48}
             className="rounded-full"
-            unoptimized
           />
         </motion.div>
         <motion.div

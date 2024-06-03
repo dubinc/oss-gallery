@@ -28,7 +28,6 @@ const SignInModal = ({
             className="h-10 w-10 rounded-full"
             width={20}
             height={20}
-            unoptimized
           />
         </a>
         <h3 className="font-display text-2xl font-bold">Sign In</h3>

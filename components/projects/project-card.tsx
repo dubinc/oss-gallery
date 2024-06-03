@@ -24,7 +24,6 @@ export default function ProjectCard(project: Project) {
           width={100}
           height={100}
           className="h-16 w-16 rounded-full bg-white p-2"
-          unoptimized
         />
         <div className={buttonLinkVariants({ variant: "secondary" })}>
           <Star className="h-4 w-4" />

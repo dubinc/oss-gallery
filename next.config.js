@@ -6,17 +6,7 @@ const nextConfig = {
     ppr: true,
   },
   images: {
-    remotePatterns: [
-      {
-        hostname: "assets.dub.co",
-      },
-      {
-        hostname: "avatars.githubusercontent.com",
-      },
-      {
-        hostname: "o41lbhvmufhkidta.public.blob.vercel-storage.com",
-      },
-    ],
+    unoptimized: true,
   },
   async redirects() {
     return [
