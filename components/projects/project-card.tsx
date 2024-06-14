@@ -9,7 +9,7 @@ export default function ProjectCard(project: Project) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-xl"
+      className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md transition-transform will-change-transform hover:-translate-y-0.5 hover:shadow-xl"
     >
       <div
         className={cn(
