@@ -1,6 +1,6 @@
 import ProjectList from "@/components/projects/project-list";
 import SearchBar, { SearchBarPlaceholder } from "@/components/ui/search-bar";
-import { Twitter } from "@dub/ui";
+import { BookOpenText } from "lucide-react";
 import { Suspense } from "react";
 
 export default function Home() {
@@ -8,15 +8,14 @@ export default function Home() {
     <>
       <div className="relative z-10 mx-auto w-full max-w-xl px-5 py-10 xl:px-0">
         <a
-          href="https://go.oss.gallery/launch"
+          href="https://d.to/gallery"
           target="_blank"
-          rel="noreferrer"
           className="mx-auto mb-5 flex max-w-fit animate-fade-up items-center justify-center space-x-2 overflow-hidden rounded-full border border-gray-200 bg-gray-100 px-7 py-2 transition-colors hover:bg-gray-50"
           style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}
         >
-          <Twitter className="h-4 w-4 text-gray-600" />
+          <BookOpenText className="h-4 w-4 text-gray-600" />
           <p className="text-sm font-semibold text-gray-600">
-            Introducing OSS Gallery
+            How we built OSS Gallery
           </p>
         </a>
         <h1
