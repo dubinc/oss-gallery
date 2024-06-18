@@ -61,9 +61,10 @@ async function main() {
           })
         }
 
+        const { githubUrl, websiteUrl, ...projectInsertData } = project;
         const createdProject = await prisma.project.create({
           data: {
-            ...project,
+            ...projectInsertData,
             users: {
               create: {
                 role: "Seed Submitter",
