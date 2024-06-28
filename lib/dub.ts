@@ -4,9 +4,7 @@ import { Link } from "@prisma/client";
 import { Dub } from "dub";
 import { getUrlWithRef } from "./utils";
 
-export const dub = new Dub({
-  workspaceId: "ws_clv9jxuxp0006gpq847kwrcwj",
-});
+export const dub = new Dub();
 
 export async function shortenAndCreateLink({
   url,
