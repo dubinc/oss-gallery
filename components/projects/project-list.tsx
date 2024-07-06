@@ -12,18 +12,24 @@ export default function ProjectList() {
 
 async function ProjectListRSC() {
   const featured = ["gallery", "dub", "ui"];
-  const projects = await prisma.project.findMany({
-    where: {
-      verified: true,
-    },
-    orderBy: {
-      stars: "desc",
-    },
-  });
-
-  const featuredProjects = featured.map((slug) =>
-    projects.find((project) => project.slug === slug),
-  );
+  const [featuredProjects, projects] = await Promise.all([
+    prisma.project.findMany({
+      where: {
+        slug: {
+          in: featured,
+        },
+      },
+    }),
+    prisma.project.findMany({
+      where: {
+        verified: true,
+      },
+      orderBy: {
+        stars: "desc",
+      },
+      take: 300,
+    }),
+  ]);
 
   return (
     <div className="mx-5 md:mx-0">
