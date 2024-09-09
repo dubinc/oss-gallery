@@ -7,7 +7,7 @@
 <p align="center">
     A crowdsourced list of the best open-source projects on the internet.
     <br />
-    <a href="https://dub.co/blog/product-discovery-platfo"><strong>Learn how it's built »</strong></a>
+    <a href="https://dub.co/blog/product-discovery-platform"><strong>Learn how it's built »</strong></a>
     <br />
     <br />
     <a href="#introduction"><strong>Introduction</strong></a> ·
