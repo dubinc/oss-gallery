@@ -7,11 +7,11 @@
 <p align="center">
     A crowdsourced list of the best open-source projects on the internet.
     <br />
-    <a href="https://oss.gallery"><strong>Learn more »</strong></a>
+    <a href="https://dub.co/blog/product-discovery-platfo"><strong>Learn how it's built »</strong></a>
     <br />
     <br />
     <a href="#introduction"><strong>Introduction</strong></a> ·
-    <a href="#tech-stack"><strong>Tech Stack</strong></a> ·
+    <a href="#tech-stack"><strong>Tech Stack</strong></a>
 </p>
 
 <p align="center">
@@ -25,7 +25,7 @@
 
 ## Introduction
 
-OSS Gallery is a crowdsourced list of the best open-source projects on the internet.
+[OSS Gallery](https://oss.gallery) is a crowdsourced list of the best open-source projects on the internet.
 
 It uses the [Dub.co API](https://dub.co/docs/api-reference/introduction) to create short links for each project page + display real-time click analytics for them.
 
