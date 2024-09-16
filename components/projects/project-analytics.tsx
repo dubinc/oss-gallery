@@ -44,7 +44,10 @@ async function ProjectAnalyticsRSC({
             externalId: `ext_${link.id}`,
             interval: newlyAddedProject ? "24h" : "30d",
           })
-          .catch(() => [])) as ClicksTimeseries[];
+          .catch((e) => {
+            console.log("Error fetching analytics for link", link.id, e);
+            return [];
+          })) as ClicksTimeseries[];
       }),
   );
 
