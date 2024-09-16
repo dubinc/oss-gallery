@@ -48,8 +48,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0(@types/react-dom@18.2.25)(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       dub:
-        specifier: ^0.33.1
-        version: 0.33.1(zod@3.23.0)
+        specifier: ^0.40.0
+        version: 0.40.0(zod@3.23.0)
       framer-motion:
         specifier: ^11.1.7
         version: 11.1.7(@emotion/is-prop-valid@0.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -1513,8 +1513,8 @@ packages:
     resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
     engines: {node: '>=12'}
 
-  dub@0.33.1:
-    resolution: {integrity: sha512-R0X0z9+nPCLs7J62kH2K3tX5L6fNigsPsw/Ch6zvfMy3hgSuSrA6idGQ474e/kJQdXXSi8T4hZsAPy1UzTZHAA==}
+  dub@0.40.0:
+    resolution: {integrity: sha512-Z2SZrPb1vdxaiDcgDo9Nsp57JW8bbqnhGhBsdEGwSA22B3EpEZ/NJm3eXcoXpVYZwyzUjOax6YNvFjt9I8kZtg==}
     peerDependencies:
       zod: '>= 3'
 
@@ -3868,7 +3868,7 @@ snapshots:
 
   dotenv@16.4.5: {}
 
-  dub@0.33.1(zod@3.23.0):
+  dub@0.40.0(zod@3.23.0):
     dependencies:
       zod: 3.23.0
 
