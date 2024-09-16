@@ -15,11 +15,11 @@ importers:
         specifier: ^0.0.4
         version: 0.0.4(tailwindcss@3.4.3)
       '@dub/ui':
-        specifier: ^0.1.11
-        version: 0.1.11(@types/react-dom@18.2.25)(@types/react@18.2.24)(@vercel/analytics@1.2.2(next@14.3.0-canary.30(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0))(linkifyjs@4.1.3)(next@14.3.0-canary.30(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: ^0.1.48
+        version: 0.1.48(@types/react-dom@18.2.25)(@types/react@18.2.24)(embla-carousel@8.3.0)(next@14.3.0-canary.30(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@dub/utils':
-        specifier: ^0.0.48
-        version: 0.0.48(next@14.3.0-canary.30(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+        specifier: ^0.0.68
+        version: 0.0.68(next@14.3.0-canary.30(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
       '@headlessui/tailwindcss':
         specifier: ^0.2.0
         version: 0.2.0(tailwindcss@3.4.3)
@@ -48,8 +48,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0(@types/react-dom@18.2.25)(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       dub:
-        specifier: ^0.33.1
-        version: 0.33.1(zod@3.23.0)
+        specifier: ^0.40.0
+        version: 0.40.0(zod@3.23.0)
       framer-motion:
         specifier: ^11.1.7
         version: 11.1.7(@emotion/is-prop-valid@0.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -182,15 +182,15 @@ packages:
   '@dub/tailwind-config@0.0.4':
     resolution: {integrity: sha512-us2ZR79rEq15GLwMspInR4jZxjW+GkYD7U88pvvZQA6T7VBYMrJQjSvcri5cFpKSlXkT+u2SUawCj0uLDEH2Xg==}
 
-  '@dub/ui@0.1.11':
-    resolution: {integrity: sha512-6eRWxAmLvypi3Jlzp+FUujZg33cYqY9pkd0TwDi8Rmc2uhOVVRoA0FOClyjEzg1etZ7Xv8Ywpq6cx7Vo8bD6Lw==}
+  '@dub/ui@0.1.48':
+    resolution: {integrity: sha512-x8cVHYqhyhLNdj4bs4pZmPRfq9qS0QmQcl9t7MfZrY0TzKukdUdU3KlS0cZFAMmZw50RrM14ldGMobZqV06bwg==}
     peerDependencies:
-      '@vercel/analytics': ^1.0.0
       next: 14.2.0-canary.47
       react: ^18.2.0
+      react-dom: ^18.2.0
 
-  '@dub/utils@0.0.48':
-    resolution: {integrity: sha512-4cEECX+m+BVdfX+2VO7zWfAA5kxQPO7e6qb3PM+M78hUGvInxMgp1sbn1/rHoX8L4i1qRZ9X+ogsgKaDyHQgVg==}
+  '@dub/utils@0.0.68':
+    resolution: {integrity: sha512-ntdKRQxuDtnFXM+jhss1QMsL7HzLteEYnzUTW71vwe6bnAgVdsWZvg3TYPoeCNJzXyTsM/aC4XTK+QtLqIRz7w==}
     peerDependencies:
       next: 14.2.0-canary.47
       react: ^18.2.0
@@ -360,14 +360,44 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
+  '@floating-ui/react-dom@2.1.2':
+    resolution: {integrity: sha512-06okr5cgPzMNBy+Ycse2A6udMi4bqwW/zgBF/rwjcNqWkyr82Mcg8b0vjX8OJpZFy/FKjJmw6wV7t44kK6kW7A==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+
   '@floating-ui/react@0.19.2':
     resolution: {integrity: sha512-JyNk4A0Ezirq8FlXECvRtQOX/iBe5Ize0W/pLkrZjfHW9GUV7Xnq6zm6fyZuQzaHHqEnVizmvlA96e1/CkZv+w==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
+  '@floating-ui/react@0.26.24':
+    resolution: {integrity: sha512-2ly0pCkZIGEQUq5H8bBK0XJmc1xIK/RM3tvVzY3GBER7IOD1UgmC2Y2tjj4AuS+TC+vTE1KJv2053290jua0Sw==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+
   '@floating-ui/utils@0.2.1':
     resolution: {integrity: sha512-9TANp6GPoMtYzQdt54kfAyMmz1+osLlXdg2ENroU7zzrtflTLrrC/lgrIfaSe+Wu0b89GKccT7vxXA0MoAIO+Q==}
+
+  '@floating-ui/utils@0.2.8':
+    resolution: {integrity: sha512-kym7SodPp8/wloecOpcmSnWJsK7M0E5Wg8UcFA+uO4B9s5d0ywXOEro/8HM9x0rW+TljRzul/14UYz3TleT3ig==}
+
+  '@formatjs/ecma402-abstract@2.0.0':
+    resolution: {integrity: sha512-rRqXOqdFmk7RYvj4khklyqzcfQl9vEL/usogncBHRZfZBDOwMGuSRNFl02fu5KGHXdbinju+YXyuR+Nk8xlr/g==}
+
+  '@formatjs/fast-memoize@2.2.0':
+    resolution: {integrity: sha512-hnk/nY8FyrL5YxwP9e4r9dqeM6cAbo8PeU9UjyXojZMNvVad2Z06FAVHyR3Ecw6fza+0GH7vdJgiKIVXTMbSBA==}
+
+  '@formatjs/icu-messageformat-parser@2.7.8':
+    resolution: {integrity: sha512-nBZJYmhpcSX0WeJ5SDYUkZ42AgR3xiyhNCsQweFx3cz/ULJjym8bHAzWKvG5e2+1XO98dBYC0fWeeAECAVSwLA==}
+
+  '@formatjs/icu-skeleton-parser@1.8.2':
+    resolution: {integrity: sha512-k4ERKgw7aKGWJZgTarIcNEmvyTVD9FYh0mTrrBMHZ1b8hUu6iOJ4SzsZlo3UNAvHYa+PnvntIwRPt1/vy4nA9Q==}
+
+  '@formatjs/intl-localematcher@0.5.4':
+    resolution: {integrity: sha512-zTwEpWOzZ2CiKcB93BLngUX59hQkuZjT2+SAQEscSm52peDW/getsawMcWF1rGRpMCX6D7nSJA3CzJ8gn13N/g==}
 
   '@headlessui/react@1.7.19':
     resolution: {integrity: sha512-Ll+8q3OlMJfJbAKM/+/Y2q6PPYbryqNTXDbryx7SXLIDamkF6iQFbriYHga0dY44PvDhvvBWCx1Xj4U5+G4hOw==}
@@ -499,6 +529,18 @@ packages:
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0', yarn: '>=3.2.0'}
     cpu: [x64]
     os: [win32]
+
+  '@internationalized/date@3.5.5':
+    resolution: {integrity: sha512-H+CfYvOZ0LTJeeLOqm19E3uj/4YjrmOFtBufDHPfvtI80hFAMqtrp7oCACpe4Cil5l8S0Qu/9dYfZc/5lY8WQQ==}
+
+  '@internationalized/message@3.1.4':
+    resolution: {integrity: sha512-Dygi9hH1s7V9nha07pggCkvmRfDd3q2lWnMGvrJyrOwYMe1yj4D2T9BoH9I6MGR7xz0biQrtLPsqUkqXzIrBOw==}
+
+  '@internationalized/number@3.5.3':
+    resolution: {integrity: sha512-rd1wA3ebzlp0Mehj5YTuTI50AQEx80gWFyHcQu+u91/5NgdwBecO8BH6ipPfE+lmQ9d63vpB3H9SHoIUiupllw==}
+
+  '@internationalized/string@3.2.3':
+    resolution: {integrity: sha512-9kpfLoA8HegiWTeCbR2livhdVeKobCnVv8tlJ6M2jF+4tcMqDo94ezwlnrUANBWPgd8U7OXIHCk2Ov2qhk4KXw==}
 
   '@jridgewell/gen-mapping@0.3.3':
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
@@ -1135,6 +1177,107 @@ packages:
   '@radix-ui/rect@1.0.1':
     resolution: {integrity: sha512-fyrgCaedtvMg9NK3en0pnOYJdtfwxUcNolezkNPUsoX57X8oQk+NkqcvzHXD2uKNij6GXmWU9NDru2IWjrO4BQ==}
 
+  '@react-aria/datepicker@3.11.2':
+    resolution: {integrity: sha512-6sbLln3VXSBcBRDgSACBzIzF/5KV5NlNOhZvXPFE6KqFw6GbevjZQTv5BNDXiwA3CQoawIRF7zgRvTANw8HkNA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-aria/focus@3.18.2':
+    resolution: {integrity: sha512-Jc/IY+StjA3uqN73o6txKQ527RFU7gnG5crEl5Xy3V+gbYp2O5L3ezAo/E0Ipi2cyMbG6T5Iit1IDs7hcGu8aw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-aria/form@3.0.8':
+    resolution: {integrity: sha512-8S2QiyUdAgK43M3flohI0R+2rTyzH088EmgeRArA8euvJTL16cj/oSOKMEgWVihjotJ9n6awPb43ZhKboyNsMg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-aria/i18n@3.12.2':
+    resolution: {integrity: sha512-PvEyC6JWylTpe8dQEWqQwV6GiA+pbTxHQd//BxtMSapRW3JT9obObAnb/nFhj3HthkUvqHyj0oO1bfeN+mtD8A==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-aria/interactions@3.22.2':
+    resolution: {integrity: sha512-xE/77fRVSlqHp2sfkrMeNLrqf2amF/RyuAS6T5oDJemRSgYM3UoxTbWjucPhfnoW7r32pFPHHgz4lbdX8xqD/g==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-aria/label@3.7.11':
+    resolution: {integrity: sha512-REgejE5Qr8cXG/b8H2GhzQmjQlII/0xQW/4eDzydskaTLvA7lF5HoJUE6biYTquH5va38d8XlH465RPk+bvHzA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-aria/live-announcer@3.3.4':
+    resolution: {integrity: sha512-w8lxs35QrRrn6pBNzVfyGOeqWdxeVKf9U6bXIVwhq7rrTqRULL8jqy8RJIMfIs1s8G5FpwWYjyBOjl2g5Cu1iA==}
+
+  '@react-aria/spinbutton@3.6.8':
+    resolution: {integrity: sha512-OJMAYRIZ0WrWE+5tZsywrSg4t+aOwl6vl/e1+J64YcGMM+p+AKd61KGG5T0OgNSORXjoVIZOmj6wZ6Od4xfPMw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-aria/ssr@3.9.5':
+    resolution: {integrity: sha512-xEwGKoysu+oXulibNUSkXf8itW0npHHTa6c4AyYeZIJyRoegeteYuFpZUBPtIDE8RfHdNsSmE1ssOkxRnwbkuQ==}
+    engines: {node: '>= 12'}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-aria/utils@3.25.2':
+    resolution: {integrity: sha512-GdIvG8GBJJZygB4L2QJP1Gabyn2mjFsha73I2wSe+o4DYeGWoJiMZRM06PyTIxLH4S7Sn7eVDtsSBfkc2VY/NA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-stately/datepicker@3.10.2':
+    resolution: {integrity: sha512-pa5IZUw+49AyOnddwu4XwU2kI5eo/1thbiIVNHP8uDpbbBrBkquSk3zVFDAGX1cu/I1U2VUkt64U/dxgkwaMQw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-stately/form@3.0.5':
+    resolution: {integrity: sha512-J3plwJ63HQz109OdmaTqTA8Qhvl3gcYYK7DtgKyNP6mc/Me2Q4tl2avkWoA+22NRuv5m+J8TpBk4AVHUEOwqeQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-stately/overlays@3.6.10':
+    resolution: {integrity: sha512-XxZ2qScT5JPwGk9qiVJE4dtVh3AXTcYwGRA5RsHzC26oyVVsegPqY2PmNJGblAh6Q57VyodoVUyebE0Eo5CzRw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-stately/utils@3.10.3':
+    resolution: {integrity: sha512-moClv7MlVSHpbYtQIkm0Cx+on8Pgt1XqtPx6fy9rQFb2DNc9u1G3AUVnqA17buOkH1vLxAtX4MedlxMWyRCYYA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-types/button@3.9.6':
+    resolution: {integrity: sha512-8lA+D5JLbNyQikf8M/cPP2cji91aVTcqjrGpDqI7sQnaLFikM8eFR6l1ZWGtZS5MCcbfooko77ha35SYplSQvw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-types/calendar@3.4.9':
+    resolution: {integrity: sha512-O/PS9c21HgO9qzxOyZ7/dTccxabFZdF6tj3UED4DrBw7AN3KZ7JMzwzYbwHinOcO7nUcklGgNoAIHk45UAKR9g==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-types/datepicker@3.8.2':
+    resolution: {integrity: sha512-Ih4F0bNVGrEuwCD8XmmBAspuuOBsj/Svn/pDFtC2RyAZjXfWh+sI+n4XLz/sYKjvARh5TUI8GNy9smYS4vYXug==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-types/dialog@3.5.12':
+    resolution: {integrity: sha512-JmpQbSpXltqEyYfEwoqDolABIiojeExkqolHNdQlayIsfFuSxZxNwXZPOpz58Ri/iwv21JP7K3QF0Gb2Ohxl9w==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-types/overlays@3.8.9':
+    resolution: {integrity: sha512-9ni9upQgXPnR+K9cWmbYWvm3ll9gH8P/XsEZprqIV5zNLMF334jADK48h4jafb1X9RFnj0WbHo6BqcSObzjTig==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
+  '@react-types/shared@3.24.1':
+    resolution: {integrity: sha512-AUQeGYEm/zDTN6zLzdXolDxz3Jk5dDL7f506F07U8tBwxNNI3WRdhU84G0/AaFikOZzDXhOZDr3MhQMzyE7Ydw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
+
   '@sindresorhus/slugify@2.2.1':
     resolution: {integrity: sha512-MkngSCRZ8JdSOCHRaYd+D01XhvU3Hjy6MGl06zhOk614hp9EOAp5gIkBeQg7wtmxpitU6eAL4kdiRMcJa2dlrw==}
     engines: {node: '>=12'}
@@ -1156,11 +1299,22 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
 
+  '@tanstack/react-table@8.20.5':
+    resolution: {integrity: sha512-WEHopKw3znbUZ61s9i0+i9g8drmDo6asTWbrQh8Us63DAk/M0FkmIqERew6P71HI75ksZ2Pxyuf4vvKh9rAkiA==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+
   '@tanstack/react-virtual@3.4.0':
     resolution: {integrity: sha512-GZN4xn/Tg5w7gvYeVcMVCeL4pEyUhvg+Cp6KX2Z01C4FRNxIWMgIQ9ibgMarNQfo+gt0PVLcEER4A9sNv/jlow==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+
+  '@tanstack/table-core@8.20.5':
+    resolution: {integrity: sha512-P9dF7XbibHph2PFRz8gfBKEXEY/HJPOhym8CHmjF8y3q5mWpKx9xtZapXQUWCgkqvsK0R46Azuz+VaxD4Xl+Tg==}
+    engines: {node: '>=12'}
 
   '@tanstack/virtual-core@3.4.0':
     resolution: {integrity: sha512-75jXqXxqq5M5Veb9KP1STi8kA5u408uOOAefk2ftHDGCpUk3RP6zX++QqfbmHJTBiU72NQ+ghgCZVts/Wocz8Q==}
@@ -1357,6 +1511,10 @@ packages:
     resolution: {integrity: sha512-m3iNNWpd9rl3jvvcBnu70ylMdrXt8Vlq4HYadnU5fwcOtvkSQWPmj7amUcDT2qYI7risszBjI5AUIUox9D16pg==}
     engines: {node: '>=6'}
 
+  clsx@2.1.1:
+    resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
+    engines: {node: '>=6'}
+
   cmdk@0.2.1:
     resolution: {integrity: sha512-U6//9lQ6JvT47+6OF6Gi8BvkxYQ8SCRRSKIJkthIMsFsLZRG0cKvTtuTaefyIKMQb8rvvXy0wGdpTNq/jPtm+g==}
     peerDependencies:
@@ -1457,6 +1615,9 @@ packages:
     resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
     engines: {node: '>=0.11'}
 
+  date-fns@3.6.0:
+    resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
+
   dayjs@1.11.10:
     resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==}
 
@@ -1513,13 +1674,31 @@ packages:
     resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
     engines: {node: '>=12'}
 
-  dub@0.33.1:
-    resolution: {integrity: sha512-R0X0z9+nPCLs7J62kH2K3tX5L6fNigsPsw/Ch6zvfMy3hgSuSrA6idGQ474e/kJQdXXSi8T4hZsAPy1UzTZHAA==}
+  dub@0.40.0:
+    resolution: {integrity: sha512-Z2SZrPb1vdxaiDcgDo9Nsp57JW8bbqnhGhBsdEGwSA22B3EpEZ/NJm3eXcoXpVYZwyzUjOax6YNvFjt9I8kZtg==}
     peerDependencies:
       zod: '>= 3'
 
   electron-to-chromium@1.4.539:
     resolution: {integrity: sha512-wRmWJ8F7rgmINuI32S6r2SLrw/h/bJQsDSvBiq9GBfvc2Lh73qTOwn73r3Cf67mjVgFGJYcYtmERzySa5jIWlg==}
+
+  embla-carousel-autoplay@8.3.0:
+    resolution: {integrity: sha512-h7DFJLf9uQD+XDxr1NwA3/oFIjsnj/iED2RjET5u6/svMec46IbF1CYPhmB5Q/1Fc0WkcvhPpsEsrtVXQLxNzA==}
+    peerDependencies:
+      embla-carousel: 8.3.0
+
+  embla-carousel-react@8.3.0:
+    resolution: {integrity: sha512-P1FlinFDcIvggcErRjNuVqnUR8anyo8vLMIH8Rthgofw7Nj8qTguCa2QjFAbzxAUTQTPNNjNL7yt0BGGinVdFw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.1 || ^18.0.0
+
+  embla-carousel-reactive-utils@8.3.0:
+    resolution: {integrity: sha512-EYdhhJ302SC4Lmkx8GRsp0sjUhEN4WyFXPOk0kGu9OXZSRMmcBlRgTvHcq8eKJE1bXWBsOi1T83B+BSSVZSmwQ==}
+    peerDependencies:
+      embla-carousel: 8.3.0
+
+  embla-carousel@8.3.0:
+    resolution: {integrity: sha512-Ve8dhI4w28qBqR8J+aMtv7rLK89r1ZA5HocwFz6uMB/i5EiC7bGI7y+AM80yAVUJw3qqaZYK7clmZMUR8kM3UA==}
 
   esbuild@0.19.12:
     resolution: {integrity: sha512-aARqgq8roFBj054KvQr5f1sFu0D65G+miZRCuJyJ0G13Zwx7vRar5Zhn2tkQNzIXcBrNVsv/8stehpj+GAjgbg==}
@@ -1659,6 +1838,9 @@ packages:
   internmap@2.0.3:
     resolution: {integrity: sha512-5Hh7Y1wQbvY5ooGgPbDaL5iYLAPzMTUrjMulskHLH6wnv/A+1q5rgEaiuqEjB+oxGXIVZs1FF+R/KPN3ZSQYYg==}
     engines: {node: '>=12'}
+
+  intl-messageformat@10.5.14:
+    resolution: {integrity: sha512-IjC6sI0X7YRjjyVH9aUgdftcmZK7WXdHeil4KwbjDnRWjnVitKpAx3rr6t6di1joFp5188VqKcobOPA6mCLG/w==}
 
   invariant@2.2.4:
     resolution: {integrity: sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==}
@@ -2344,8 +2526,8 @@ packages:
   tailwind-merge@1.14.0:
     resolution: {integrity: sha512-3mFKyCo/MBcgyOTlrY8T7odzZFx+w+qKSMAmdFzRvqBfLlSigU6TZnlFHK0lkMwj9Bj8OYU+9yW9lmGuS0QEnQ==}
 
-  tailwind-merge@2.3.0:
-    resolution: {integrity: sha512-vkYrLpIP+lgR0tQCG6AP7zZXCTLc1Lnv/CCRT3BqJ9CZ3ui2++GPaGb1x/ILsINIMSYqqvrpqjUFsMNLlW99EA==}
+  tailwind-merge@2.5.2:
+    resolution: {integrity: sha512-kjEBm+pvD+6eAwzJL2Bi+02/9LFLal1Gs61+QB7HvTfQQ0aXwC5LGT8PEt1gS0CWKktKe6ysPTAy3cBC5MeiIg==}
 
   tailwind-scrollbar-hide@1.1.7:
     resolution: {integrity: sha512-X324n9OtpTmOMqEgDUEA/RgLrNfBF/jwJdctaPZDzB3mppxJk7TLIDmOreEDm1Bq4R9LSPu4Epf8VSdovNU+iA==}
@@ -2573,8 +2755,10 @@ snapshots:
     transitivePeerDependencies:
       - tailwindcss
 
-  '@dub/ui@0.1.11(@types/react-dom@18.2.25)(@types/react@18.2.24)(@vercel/analytics@1.2.2(next@14.3.0-canary.30(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0))(linkifyjs@4.1.3)(next@14.3.0-canary.30(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@dub/ui@0.1.48(@types/react-dom@18.2.25)(@types/react@18.2.24)(embla-carousel@8.3.0)(next@14.3.0-canary.30(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
+      '@floating-ui/react': 0.26.24(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@internationalized/date': 3.5.5
       '@radix-ui/react-accordion': 1.1.2(@types/react-dom@18.2.25)(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@radix-ui/react-checkbox': 1.0.4(@types/react-dom@18.2.25)(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@radix-ui/react-dialog': 1.0.5(@types/react-dom@18.2.25)(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -2585,15 +2769,23 @@ snapshots:
       '@radix-ui/react-slot': 1.0.1(react@18.2.0)
       '@radix-ui/react-switch': 1.0.3(@types/react-dom@18.2.25)(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@radix-ui/react-tooltip': 1.0.7(@types/react-dom@18.2.25)(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@vercel/analytics': 1.2.2(next@14.3.0-canary.30(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+      '@react-aria/datepicker': 3.11.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@react-stately/datepicker': 3.10.2(react@18.2.0)
+      '@tanstack/react-table': 8.20.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       class-variance-authority: 0.7.0
       cmdk: 0.2.1(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      date-fns: 3.6.0
+      embla-carousel-autoplay: 8.3.0(embla-carousel@8.3.0)
+      embla-carousel-react: 8.3.0(react@18.2.0)
       framer-motion: 10.18.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       js-cookie: 3.0.5
       linkify-react: 4.1.3(linkifyjs@4.1.3)(react@18.2.0)
+      linkifyjs: 4.1.3
       lucide-react: 0.367.0(react@18.2.0)
       next: 14.3.0-canary.30(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
+      react-day-picker: 8.10.1(date-fns@3.6.0)(react@18.2.0)
+      react-dom: 18.2.0(react@18.2.0)
       sonner: 1.4.41(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       swr: 2.2.5(react@18.2.0)
       use-debounce: 8.0.4(react@18.2.0)
@@ -2601,20 +2793,19 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
       - '@types/react-dom'
-      - linkifyjs
-      - react-dom
+      - embla-carousel
 
-  '@dub/utils@0.0.48(next@14.3.0-canary.30(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)':
+  '@dub/utils@0.0.68(next@14.3.0-canary.30(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@sindresorhus/slugify': 2.2.1
       chrono-node: 2.7.5
-      clsx: 2.1.0
+      clsx: 2.1.1
       ms: 2.1.3
       nanoid: 5.0.7
       next: 14.3.0-canary.30(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       punycode: 2.3.0
       react: 18.2.0
-      tailwind-merge: 2.3.0
+      tailwind-merge: 2.5.2
 
   '@emnapi/runtime@1.1.1':
     dependencies:
@@ -2719,6 +2910,12 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
+  '@floating-ui/react-dom@2.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@floating-ui/dom': 1.6.3
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+
   '@floating-ui/react@0.19.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@floating-ui/react-dom': 1.3.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -2727,7 +2924,41 @@ snapshots:
       react-dom: 18.2.0(react@18.2.0)
       tabbable: 6.2.0
 
+  '@floating-ui/react@0.26.24(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@floating-ui/react-dom': 2.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@floating-ui/utils': 0.2.8
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      tabbable: 6.2.0
+
   '@floating-ui/utils@0.2.1': {}
+
+  '@floating-ui/utils@0.2.8': {}
+
+  '@formatjs/ecma402-abstract@2.0.0':
+    dependencies:
+      '@formatjs/intl-localematcher': 0.5.4
+      tslib: 2.6.2
+
+  '@formatjs/fast-memoize@2.2.0':
+    dependencies:
+      tslib: 2.6.2
+
+  '@formatjs/icu-messageformat-parser@2.7.8':
+    dependencies:
+      '@formatjs/ecma402-abstract': 2.0.0
+      '@formatjs/icu-skeleton-parser': 1.8.2
+      tslib: 2.6.2
+
+  '@formatjs/icu-skeleton-parser@1.8.2':
+    dependencies:
+      '@formatjs/ecma402-abstract': 2.0.0
+      tslib: 2.6.2
+
+  '@formatjs/intl-localematcher@0.5.4':
+    dependencies:
+      tslib: 2.6.2
 
   '@headlessui/react@1.7.19(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
@@ -2818,6 +3049,23 @@ snapshots:
 
   '@img/sharp-win32-x64@0.33.3':
     optional: true
+
+  '@internationalized/date@3.5.5':
+    dependencies:
+      '@swc/helpers': 0.5.11
+
+  '@internationalized/message@3.1.4':
+    dependencies:
+      '@swc/helpers': 0.5.11
+      intl-messageformat: 10.5.14
+
+  '@internationalized/number@3.5.3':
+    dependencies:
+      '@swc/helpers': 0.5.11
+
+  '@internationalized/string@3.2.3':
+    dependencies:
+      '@swc/helpers': 0.5.11
 
   '@jridgewell/gen-mapping@0.3.3':
     dependencies:
@@ -3501,6 +3749,167 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.24.4
 
+  '@react-aria/datepicker@3.11.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@internationalized/date': 3.5.5
+      '@internationalized/number': 3.5.3
+      '@internationalized/string': 3.2.3
+      '@react-aria/focus': 3.18.2(react@18.2.0)
+      '@react-aria/form': 3.0.8(react@18.2.0)
+      '@react-aria/i18n': 3.12.2(react@18.2.0)
+      '@react-aria/interactions': 3.22.2(react@18.2.0)
+      '@react-aria/label': 3.7.11(react@18.2.0)
+      '@react-aria/spinbutton': 3.6.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@react-aria/utils': 3.25.2(react@18.2.0)
+      '@react-stately/datepicker': 3.10.2(react@18.2.0)
+      '@react-stately/form': 3.0.5(react@18.2.0)
+      '@react-types/button': 3.9.6(react@18.2.0)
+      '@react-types/calendar': 3.4.9(react@18.2.0)
+      '@react-types/datepicker': 3.8.2(react@18.2.0)
+      '@react-types/dialog': 3.5.12(react@18.2.0)
+      '@react-types/shared': 3.24.1(react@18.2.0)
+      '@swc/helpers': 0.5.11
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+
+  '@react-aria/focus@3.18.2(react@18.2.0)':
+    dependencies:
+      '@react-aria/interactions': 3.22.2(react@18.2.0)
+      '@react-aria/utils': 3.25.2(react@18.2.0)
+      '@react-types/shared': 3.24.1(react@18.2.0)
+      '@swc/helpers': 0.5.11
+      clsx: 2.1.0
+      react: 18.2.0
+
+  '@react-aria/form@3.0.8(react@18.2.0)':
+    dependencies:
+      '@react-aria/interactions': 3.22.2(react@18.2.0)
+      '@react-aria/utils': 3.25.2(react@18.2.0)
+      '@react-stately/form': 3.0.5(react@18.2.0)
+      '@react-types/shared': 3.24.1(react@18.2.0)
+      '@swc/helpers': 0.5.11
+      react: 18.2.0
+
+  '@react-aria/i18n@3.12.2(react@18.2.0)':
+    dependencies:
+      '@internationalized/date': 3.5.5
+      '@internationalized/message': 3.1.4
+      '@internationalized/number': 3.5.3
+      '@internationalized/string': 3.2.3
+      '@react-aria/ssr': 3.9.5(react@18.2.0)
+      '@react-aria/utils': 3.25.2(react@18.2.0)
+      '@react-types/shared': 3.24.1(react@18.2.0)
+      '@swc/helpers': 0.5.11
+      react: 18.2.0
+
+  '@react-aria/interactions@3.22.2(react@18.2.0)':
+    dependencies:
+      '@react-aria/ssr': 3.9.5(react@18.2.0)
+      '@react-aria/utils': 3.25.2(react@18.2.0)
+      '@react-types/shared': 3.24.1(react@18.2.0)
+      '@swc/helpers': 0.5.11
+      react: 18.2.0
+
+  '@react-aria/label@3.7.11(react@18.2.0)':
+    dependencies:
+      '@react-aria/utils': 3.25.2(react@18.2.0)
+      '@react-types/shared': 3.24.1(react@18.2.0)
+      '@swc/helpers': 0.5.11
+      react: 18.2.0
+
+  '@react-aria/live-announcer@3.3.4':
+    dependencies:
+      '@swc/helpers': 0.5.11
+
+  '@react-aria/spinbutton@3.6.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@react-aria/i18n': 3.12.2(react@18.2.0)
+      '@react-aria/live-announcer': 3.3.4
+      '@react-aria/utils': 3.25.2(react@18.2.0)
+      '@react-types/button': 3.9.6(react@18.2.0)
+      '@react-types/shared': 3.24.1(react@18.2.0)
+      '@swc/helpers': 0.5.11
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+
+  '@react-aria/ssr@3.9.5(react@18.2.0)':
+    dependencies:
+      '@swc/helpers': 0.5.11
+      react: 18.2.0
+
+  '@react-aria/utils@3.25.2(react@18.2.0)':
+    dependencies:
+      '@react-aria/ssr': 3.9.5(react@18.2.0)
+      '@react-stately/utils': 3.10.3(react@18.2.0)
+      '@react-types/shared': 3.24.1(react@18.2.0)
+      '@swc/helpers': 0.5.11
+      clsx: 2.1.0
+      react: 18.2.0
+
+  '@react-stately/datepicker@3.10.2(react@18.2.0)':
+    dependencies:
+      '@internationalized/date': 3.5.5
+      '@internationalized/string': 3.2.3
+      '@react-stately/form': 3.0.5(react@18.2.0)
+      '@react-stately/overlays': 3.6.10(react@18.2.0)
+      '@react-stately/utils': 3.10.3(react@18.2.0)
+      '@react-types/datepicker': 3.8.2(react@18.2.0)
+      '@react-types/shared': 3.24.1(react@18.2.0)
+      '@swc/helpers': 0.5.11
+      react: 18.2.0
+
+  '@react-stately/form@3.0.5(react@18.2.0)':
+    dependencies:
+      '@react-types/shared': 3.24.1(react@18.2.0)
+      '@swc/helpers': 0.5.11
+      react: 18.2.0
+
+  '@react-stately/overlays@3.6.10(react@18.2.0)':
+    dependencies:
+      '@react-stately/utils': 3.10.3(react@18.2.0)
+      '@react-types/overlays': 3.8.9(react@18.2.0)
+      '@swc/helpers': 0.5.11
+      react: 18.2.0
+
+  '@react-stately/utils@3.10.3(react@18.2.0)':
+    dependencies:
+      '@swc/helpers': 0.5.11
+      react: 18.2.0
+
+  '@react-types/button@3.9.6(react@18.2.0)':
+    dependencies:
+      '@react-types/shared': 3.24.1(react@18.2.0)
+      react: 18.2.0
+
+  '@react-types/calendar@3.4.9(react@18.2.0)':
+    dependencies:
+      '@internationalized/date': 3.5.5
+      '@react-types/shared': 3.24.1(react@18.2.0)
+      react: 18.2.0
+
+  '@react-types/datepicker@3.8.2(react@18.2.0)':
+    dependencies:
+      '@internationalized/date': 3.5.5
+      '@react-types/calendar': 3.4.9(react@18.2.0)
+      '@react-types/overlays': 3.8.9(react@18.2.0)
+      '@react-types/shared': 3.24.1(react@18.2.0)
+      react: 18.2.0
+
+  '@react-types/dialog@3.5.12(react@18.2.0)':
+    dependencies:
+      '@react-types/overlays': 3.8.9(react@18.2.0)
+      '@react-types/shared': 3.24.1(react@18.2.0)
+      react: 18.2.0
+
+  '@react-types/overlays@3.8.9(react@18.2.0)':
+    dependencies:
+      '@react-types/shared': 3.24.1(react@18.2.0)
+      react: 18.2.0
+
+  '@react-types/shared@3.24.1(react@18.2.0)':
+    dependencies:
+      react: 18.2.0
+
   '@sindresorhus/slugify@2.2.1':
     dependencies:
       '@sindresorhus/transliterate': 1.6.0
@@ -3527,11 +3936,19 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 3.4.3
 
+  '@tanstack/react-table@8.20.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@tanstack/table-core': 8.20.5
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+
   '@tanstack/react-virtual@3.4.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@tanstack/virtual-core': 3.4.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+
+  '@tanstack/table-core@8.20.5': {}
 
   '@tanstack/virtual-core@3.4.0': {}
 
@@ -3730,6 +4147,8 @@ snapshots:
 
   clsx@2.1.0: {}
 
+  clsx@2.1.1: {}
+
   cmdk@0.2.1(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       '@radix-ui/react-dialog': 1.0.0(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -3826,6 +4245,8 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.24.4
 
+  date-fns@3.6.0: {}
+
   dayjs@1.11.10: {}
 
   debug@4.3.4:
@@ -3868,11 +4289,27 @@ snapshots:
 
   dotenv@16.4.5: {}
 
-  dub@0.33.1(zod@3.23.0):
+  dub@0.40.0(zod@3.23.0):
     dependencies:
       zod: 3.23.0
 
   electron-to-chromium@1.4.539: {}
+
+  embla-carousel-autoplay@8.3.0(embla-carousel@8.3.0):
+    dependencies:
+      embla-carousel: 8.3.0
+
+  embla-carousel-react@8.3.0(react@18.2.0):
+    dependencies:
+      embla-carousel: 8.3.0
+      embla-carousel-reactive-utils: 8.3.0(embla-carousel@8.3.0)
+      react: 18.2.0
+
+  embla-carousel-reactive-utils@8.3.0(embla-carousel@8.3.0):
+    dependencies:
+      embla-carousel: 8.3.0
+
+  embla-carousel@8.3.0: {}
 
   esbuild@0.19.12:
     optionalDependencies:
@@ -4028,6 +4465,13 @@ snapshots:
   inline-style-parser@0.2.3: {}
 
   internmap@2.0.3: {}
+
+  intl-messageformat@10.5.14:
+    dependencies:
+      '@formatjs/ecma402-abstract': 2.0.0
+      '@formatjs/fast-memoize': 2.2.0
+      '@formatjs/icu-messageformat-parser': 2.7.8
+      tslib: 2.6.2
 
   invariant@2.2.4:
     dependencies:
@@ -4528,6 +4972,11 @@ snapshots:
       date-fns: 2.30.0
       react: 18.2.0
 
+  react-day-picker@8.10.1(date-fns@3.6.0)(react@18.2.0):
+    dependencies:
+      date-fns: 3.6.0
+      react: 18.2.0
+
   react-dom@18.2.0(react@18.2.0):
     dependencies:
       loose-envify: 1.4.0
@@ -4786,9 +5235,7 @@ snapshots:
 
   tailwind-merge@1.14.0: {}
 
-  tailwind-merge@2.3.0:
-    dependencies:
-      '@babel/runtime': 7.24.4
+  tailwind-merge@2.5.2: {}
 
   tailwind-scrollbar-hide@1.1.7: {}
 
