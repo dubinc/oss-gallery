@@ -1,7 +1,7 @@
 import { dub } from "@/lib/dub";
 import { EnrichedProjectProps } from "@/lib/types";
 import { LoadingSpinner } from "@dub/ui";
-import { ClicksTimeseries } from "dub/models/components";
+import { AnalyticsTimeseries } from "dub/dist/commonjs/models/components";
 import { Suspense } from "react";
 import ProjectAnalyticsClient from "./project-analytics-client";
 
@@ -44,7 +44,7 @@ async function ProjectAnalyticsRSC({
             externalId: `ext_${link.id}`,
             interval: newlyAddedProject ? "24h" : "30d",
           })
-          .catch(() => [])) as ClicksTimeseries[];
+          .catch(() => [])) as AnalyticsTimeseries[];
       }),
   );
 
