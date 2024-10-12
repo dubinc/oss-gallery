@@ -13,7 +13,7 @@ export default function ProjectTabNote(props: {
         props.className,
       )}
     >
-      <Info className="h-5 w-5 text-blue-500" />
+      <Info className="h-5 w-5 text-blue-500 sm:w-[6.25rem]md:w-[4.25rem]"/>
       {typeof props.children === "string" ? (
         <ReactMarkdown
           className="prose text-[0.95rem] text-gray-600"
